@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"newstarellie.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="成果5&#x2F;27 寫出一個番茄鐘(四)-pure.css 改善頁面 心得程式碼整理 JS部分 檢查程式碼 刪去多餘的程式碼 寫註解 方便之後查看   CSS 部分  使用註解區分部位 確實分類好程式碼 排好順序 試試看功能 確定每行程式碼都是必須的   HTML部分  使用註解標明插件    使用程式(本次新學會的)使用ColorDrop找尋好看的配色複習註解的使用●HTML、CSS、Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5&#x2F;27 寫出一個番茄鐘(四)-pure.css 改善頁面">
+<meta property="og:url" content="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%984/">
+<meta property="og:site_name" content="Ellie&#39;s Blog">
+<meta property="og:description" content="成果5&#x2F;27 寫出一個番茄鐘(四)-pure.css 改善頁面 心得程式碼整理 JS部分 檢查程式碼 刪去多餘的程式碼 寫註解 方便之後查看   CSS 部分  使用註解區分部位 確實分類好程式碼 排好順序 試試看功能 確定每行程式碼都是必須的   HTML部分  使用註解標明插件    使用程式(本次新學會的)使用ColorDrop找尋好看的配色複習註解的使用●HTML、CSS、Jav">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://upload.cc/i1/2022/05/27/5Zwter.png">
+<meta property="og:image" content="https://upload.cc/i1/2022/05/27/bthEjL.png">
+<meta property="article:published_time" content="2022-05-27T08:32:50.000Z">
+<meta property="article:modified_time" content="2022-06-02T10:41:21.461Z">
+<meta property="article:author" content="Ellie Chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.cc/i1/2022/05/27/5Zwter.png">
+
+<link rel="canonical" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%984/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>5/27 寫出一個番茄鐘(四)-pure.css 改善頁面 | Ellie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ellie's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%984/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5/27 寫出一個番茄鐘(四)-pure.css 改善頁面
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-05-27 16:32:50" itemprop="dateCreated datePublished" datetime="2022-05-27T16:32:50+08:00">2022-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-02 18:41:21" itemprop="dateModified" datetime="2022-06-02T18:41:21+08:00">2022-06-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/OJQzOVK">5&#x2F;27 寫出一個番茄鐘(四)-pure.css 改善頁面</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><h2 id="程式碼整理"><a href="#程式碼整理" class="headerlink" title="程式碼整理"></a>程式碼整理</h2><ul>
+<li>JS部分<ul>
+<li>檢查程式碼 刪去多餘的程式碼</li>
+<li>寫註解 方便之後查看</li>
+</ul>
+</li>
+<li>CSS 部分 <ul>
+<li>使用註解區分部位</li>
+<li>確實分類好程式碼 排好順序</li>
+<li>試試看功能 確定每行程式碼都是必須的</li>
+</ul>
+</li>
+<li>HTML部分 <ul>
+<li>使用註解標明插件</li>
+</ul>
+</li>
+</ul>
+<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="使用ColorDrop找尋好看的配色"><a href="#使用ColorDrop找尋好看的配色" class="headerlink" title="使用ColorDrop找尋好看的配色"></a>使用<a target="_blank" rel="noopener" href="https://colordrop.io/popular/">ColorDrop</a>找尋好看的配色</h2><h2 id="複習註解的使用"><a href="#複習註解的使用" class="headerlink" title="複習註解的使用"></a>複習註解的使用</h2><p><a href="%5B">●HTML、CSS、JavaScript如何註解?
+</a>](<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10109611">https://ithelp.ithome.com.tw/articles/10109611</a>)</p>
+<h3 id="HTML的註解"><a href="#HTML的註解" class="headerlink" title="HTML的註解"></a>HTML的註解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--我是註解 --&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS的註解"><a href="#CSS的註解" class="headerlink" title="CSS的註解"></a>CSS的註解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/**我是註解/</span><br></pre></td></tr></table></figure>
+
+<h3 id="JS的註解"><a href="#JS的註解" class="headerlink" title="JS的註解"></a>JS的註解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* */ 多行的註解</span><br><span class="line">// 單行註解</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用pure-css"><a href="#使用pure-css" class="headerlink" title="使用pure.css"></a>使用<a target="_blank" rel="noopener" href="https://purecss.io/">pure.css</a></h2><p>(還沒認真學過bootstrap 所以先用這個)</p>
+<h3 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h3><ul>
+<li>到官網<a target="_blank" rel="noopener" href="https://purecss.io/">pure.css</a></li>
+<li>複製CDN <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/purecss@2.1.0/build/pure-min.css&quot; integrity=&quot;sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+<li>到左側選單找到想要的功能 </li>
+<li>複製貼上到HTML </li>
+<li>用CSS 可以修改成自己想要的樣子</li>
+</ul>
+<h3 id="想要修改Pure-css設定"><a href="#想要修改Pure-css設定" class="headerlink" title="想要修改Pure.css設定"></a>想要修改Pure.css設定</h3><ul>
+<li><p>要注意link的排序 </p>
+<p>自己的檔案在最下面 才能覆蓋pure.css的設定</p>
+</li>
+</ul>
+<p> <img src="https://upload.cc/i1/2022/05/27/5Zwter.png"></p>
+<ul>
+<li>一直吃不到效果怎麼辦?<ol>
+<li>到瀏覽器DevTools (按下F12)</li>
+<li>到Element 找到那個元件的標籤 </li>
+<li>向右看他的style 就會看到pure.css怎樣寫他CSS的標籤的 </li>
+<li>複製他的標籤 貼在在自己的css檔案裏面</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://upload.cc/i1/2022/05/27/bthEjL.png"></p>
+<h2 id="在VScode使用ctrl-h-取代"><a href="#在VScode使用ctrl-h-取代" class="headerlink" title="在VScode使用ctrl+h 取代"></a>在VScode使用ctrl+h 取代</h2><p><a target="_blank" rel="noopener" href="https://www.ucamc.com/articles/317-vscode-windows-%E7%89%88%E6%9C%AC%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%8D%B5">VSCode windows 版本基本常用快捷鍵</a></p>
+<ul>
+<li>用在想要修改東西的時候 不用慢慢找程式碼 </li>
+<li>( 今天用在修改function名稱 超級好用</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%95%AA%E8%8C%84%E9%90%985/" rel="prev" title="5/28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入">
+      <i class="fa fa-chevron-left"></i> 5/28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Sass-basic/" rel="next" title="學習Sass基礎1 --Sass是什麼 如何引入">
+      學習Sass基礎1 --Sass是什麼 如何引入 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">成果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">2.</span> <span class="nav-text">心得</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">程式碼整理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BC%8F-%E6%9C%AC%E6%AC%A1%E6%96%B0%E5%AD%B8%E6%9C%83%E7%9A%84"><span class="nav-number">3.</span> <span class="nav-text">使用程式(本次新學會的)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ColorDrop%E6%89%BE%E5%B0%8B%E5%A5%BD%E7%9C%8B%E7%9A%84%E9%85%8D%E8%89%B2"><span class="nav-number">3.1.</span> <span class="nav-text">使用ColorDrop找尋好看的配色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A4%87%E7%BF%92%E8%A8%BB%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">複習註解的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E7%9A%84%E8%A8%BB%E8%A7%A3"><span class="nav-number">3.2.1.</span> <span class="nav-text">HTML的註解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E7%9A%84%E8%A8%BB%E8%A7%A3"><span class="nav-number">3.2.2.</span> <span class="nav-text">CSS的註解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E7%9A%84%E8%A8%BB%E8%A7%A3"><span class="nav-number">3.2.3.</span> <span class="nav-text">JS的註解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pure-css"><span class="nav-number">3.3.</span> <span class="nav-text">使用pure.css</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F"><span class="nav-number">3.3.1.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%B3%E8%A6%81%E4%BF%AE%E6%94%B9Pure-css%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.3.2.</span> <span class="nav-text">想要修改Pure.css設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8VScode%E4%BD%BF%E7%94%A8ctrl-h-%E5%8F%96%E4%BB%A3"><span class="nav-number">3.4.</span> <span class="nav-text">在VScode使用ctrl+h 取代</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ellie Chen</p>
+  <div class="site-description" itemprop="description">放一些作品 還有學習紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ellie Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"newstarellie.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="成果5&#x2F;27 番茄鐘5 倒數計時 心得 寫不出來就用說的 最直白的想要什麼功能 EX: 三秒後要幫下一個鬧鐘倒數計時 用來簡化思考方式   在notion頁面上提出問題 之後再一一解決 可以幫助我不會在多重任務中迷失 順便記下學到的東西 從而寫成文章   直接用Notion頁面切分工作 可以一一測試功能 可以直接寫筆記 最後貼上Hexo 比較容易找得到程式碼   console.log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5&#x2F;28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入">
+<meta property="og:url" content="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%985/">
+<meta property="og:site_name" content="Ellie&#39;s Blog">
+<meta property="og:description" content="成果5&#x2F;27 番茄鐘5 倒數計時 心得 寫不出來就用說的 最直白的想要什麼功能 EX: 三秒後要幫下一個鬧鐘倒數計時 用來簡化思考方式   在notion頁面上提出問題 之後再一一解決 可以幫助我不會在多重任務中迷失 順便記下學到的東西 從而寫成文章   直接用Notion頁面切分工作 可以一一測試功能 可以直接寫筆記 最後貼上Hexo 比較容易找得到程式碼   console.log">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-27T08:32:50.000Z">
+<meta property="article:modified_time" content="2022-06-01T07:43:22.373Z">
+<meta property="article:author" content="Ellie Chen">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%985/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>5/28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入 | Ellie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ellie's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%985/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5/28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-05-27 16:32:50" itemprop="dateCreated datePublished" datetime="2022-05-27T16:32:50+08:00">2022-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-01 15:43:22" itemprop="dateModified" datetime="2022-06-01T15:43:22+08:00">2022-06-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/WNMdmbb">5&#x2F;27 番茄鐘5 倒數計時</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
+<li>寫不出來就用說的 最直白的想要什麼功能<ul>
+<li>EX: 三秒後要幫下一個鬧鐘倒數計時</li>
+<li>用來簡化思考方式</li>
+</ul>
+</li>
+<li>在notion頁面上提出問題 之後再一一解決<ul>
+<li>可以幫助我不會在多重任務中迷失</li>
+<li>順便記下學到的東西 從而寫成文章</li>
+</ul>
+</li>
+<li>直接用Notion頁面切分工作<ul>
+<li>可以一一測試功能</li>
+<li>可以直接寫筆記 最後貼上Hexo</li>
+<li>比較容易找得到程式碼</li>
+</ul>
+</li>
+<li>console.log 加上文字<ul>
+<li>EX : console.log(‵累積工作時間:${累積工作時間}&#96;);</li>
+<li>方便直接查看測試結果</li>
+</ul>
+</li>
+<li>console.log不要馬上刪掉<ul>
+<li>可以等文章上傳前 整理程式碼的時候</li>
+<li>方便觀察</li>
+<li>一起整理比較快</li>
+</ul>
+</li>
+</ul>
+<h1 id="邏輯說明"><a href="#邏輯說明" class="headerlink" title="邏輯說明"></a>邏輯說明</h1><h2 id="偵測輸入數字-判斷正確輸入"><a href="#偵測輸入數字-判斷正確輸入" class="headerlink" title="偵測輸入數字 判斷正確輸入"></a>偵測輸入數字 判斷正確輸入</h2><ul>
+<li>利用ture&#x2F;false</li>
+<li>使用for 迴圈 判斷input的值<ul>
+<li>然後改變boolen值</li>
+<li>無法直接alert 在回圈內會出現多個ALERT</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;input&quot;</span>).<span class="title function_">change</span>(<span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//偵測輸入數字 判斷正確輸入</span></span><br><span class="line">      <span class="keyword">let</span> alert1 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        a = $(<span class="string">`.clock-list div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>();</span><br><span class="line">        <span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">          alert1 = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (alert1 == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&quot;時間設定不可為0&quot;</span>);</span><br><span class="line">        alert1 = <span class="literal">false</span>;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">removeAttr</span>(<span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//偵測輸入文字</span></span><br><span class="line">      <span class="keyword">let</span> alert2 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        b = $(<span class="string">`.textSetting div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>();</span><br><span class="line">        <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">          alert2 = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (alert2 == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&quot;提醒文字必填&quot;</span>);</span><br><span class="line">        alert2 = <span class="literal">false</span>;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">removeAttr</span>(<span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="將頁面輸入的時間形成可用的資料"><a href="#將頁面輸入的時間形成可用的資料" class="headerlink" title="將頁面輸入的時間形成可用的資料"></a>將頁面輸入的時間形成可用的資料</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> accumulationTime = <span class="number">0</span>; <span class="comment">//所有時間總和</span></span><br><span class="line"><span class="keyword">let</span> accumulateArr = []; <span class="comment">//累加時間的陣列  秒數=切換頁面狀態的時間</span></span><br><span class="line"><span class="keyword">let</span> originalArr = []; <span class="comment">//個階段鬧鐘時長  原始輸入時間的陣列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//番茄鐘循環的次數</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n = <span class="number">0</span>; n &lt; cycleTimes; n++) &#123;</span><br><span class="line">  <span class="comment">//抓取頁面輸入的值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="comment">//計算所有時間總和</span></span><br><span class="line">    accumulationTime += <span class="title class_">Number</span>(</span><br><span class="line">      $(<span class="string">`fieldset div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>() * <span class="number">60</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">//形成累加時間的陣列  秒數=切換頁面狀態的時間</span></span><br><span class="line">    accumulateArr.<span class="title function_">push</span>(accumulationTime);</span><br><span class="line">    <span class="comment">//形成原始輸入時間的陣列</span></span><br><span class="line">    originalArr.<span class="title function_">push</span>($(<span class="string">`fieldset div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>() * <span class="number">60</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="判斷當前秒數-改變頁面的狀態"><a href="#判斷當前秒數-改變頁面的狀態" class="headerlink" title="判斷當前秒數 改變頁面的狀態"></a>判斷當前秒數 改變頁面的狀態</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用迴圈 +判斷式 讓鬧鐘在accumulateArr的秒數切換</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; accumulateArr.<span class="property">length</span> + <span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (nowTime == accumulateArr[i]) &#123;</span><br><span class="line">    <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">    <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">    <span class="comment">//設定鬧鐘的倒數計時時間</span></span><br><span class="line">    countDown = originalArr[i + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判斷鬧鐘類型 來改變頁面狀態</span></span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">//當下秒數 還是工作時間 所以要+1</span></span><br><span class="line">      workTime += <span class="number">1</span>;</span><br><span class="line">      $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;休息時間&quot;</span>);</span><br><span class="line">      $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;green&quot;</span>);</span><br><span class="line">      <span class="title function_">textAlarm</span>(workTimeAlarm);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">      $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;工作&quot;</span>);</span><br><span class="line">      $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#FFC0BE&quot;</span>);</span><br><span class="line">      <span class="title function_">textAlarm</span>(breakTimeAlarm);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="計算累積工作時間"><a href="#計算累積工作時間" class="headerlink" title="計算累積工作時間"></a>計算累積工作時間</h2><ul>
+<li>可以改 :<ul>
+<li>if (accumulateArr[i] &lt; nowTime &amp;&amp; nowTime &lt; accumulateArr[i + 1]) {<ul>
+<li>這行用originalArr 作為判段</li>
+</ul>
+</li>
+<li>上面 也要將originalArr 形成cycleTime的倍數陣列</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (accumulationTime &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//先載入第一個鬧鐘 因為下面的判斷式 不會算到第一個鬧鐘的時間</span></span><br><span class="line"><span class="keyword">if</span> (nowTime &lt; accumulateArr[<span class="number">0</span>]) &#123;</span><br><span class="line">  $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;工作時間&quot;</span>);</span><br><span class="line">  $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#FFC0BE&quot;</span>);</span><br><span class="line">  workTime += <span class="number">1</span>;</span><br><span class="line">  <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">  <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基數鬧鐘時間 累積到工作時數</span></span><br><span class="line"><span class="keyword">if</span> (accumulateArr[i] &lt; nowTime &amp;&amp; nowTime &lt; accumulateArr[i + <span class="number">1</span>]) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    workTime += <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//console.log(&quot;workTime&quot; + workTime);</span></span><br><span class="line">    <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">    <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="每一秒改變的參數-計時"><a href="#每一秒改變的參數-計時" class="headerlink" title="每一秒改變的參數(計時"></a>每一秒改變的參數(計時</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">countDown -= <span class="number">1</span>; <span class="comment">//倒數計時</span></span><br><span class="line"><span class="comment">//將倒數時間顯示在頁面</span></span><br><span class="line"><span class="title function_">countSecondToMinuteAndHour</span>(countDown, <span class="string">&quot;.countDownTime&quot;</span>);</span><br><span class="line"><span class="comment">//所有鬧鐘的時間-1 </span></span><br><span class="line">accumulationTime -= <span class="number">1</span>;</span><br><span class="line"><span class="comment">//目前累積的時間 +1 </span></span><br><span class="line">nowTime += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="將秒數轉為時分秒-將文字插入頁面"><a href="#將秒數轉為時分秒-將文字插入頁面" class="headerlink" title="將秒數轉為時分秒 + 將文字插入頁面"></a>將秒數轉為時分秒 + 將文字插入頁面</h2><ul>
+<li>用於:<ul>
+<li>顯示倒數計時時間</li>
+<li>顯示累積的工作時間</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//計算秒數變成時分秒</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">countSecondToMinuteAndHour</span>(<span class="params">second, place</span>) &#123;</span><br><span class="line">  <span class="comment">//計算時間</span></span><br><span class="line">  <span class="keyword">let</span> showHour = <span class="title class_">Math</span>.<span class="title function_">floor</span>(second / <span class="number">3600</span>);</span><br><span class="line">  <span class="keyword">let</span> showMinutes = <span class="title class_">Math</span>.<span class="title function_">floor</span>(second / <span class="number">60</span>) % <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">let</span> showSecond = second % <span class="number">60</span>;</span><br><span class="line"><span class="comment">//顯示於頁面 </span></span><br><span class="line">  <span class="keyword">if</span> (showHour &lt; <span class="number">10</span>) &#123;</span><br><span class="line"><span class="comment">//加上0 防止版型跑掉</span></span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(2)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showHour&#125;</span>時`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(2)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showHour&#125;</span>小時`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (showMinutes &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(3)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showMinutes&#125;</span>分`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(3)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showMinutes&#125;</span>分`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (showSecond &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(4)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showSecond&#125;</span>秒`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(4)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showSecond&#125;</span>秒`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="將累積工作時間插入到-local-strage"><a href="#將累積工作時間插入到-local-strage" class="headerlink" title="將累積工作時間插入到 local strage"></a>將累積工作時間插入到 local strage</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">workTimeToLocal</span>(<span class="params">workTime</span>) &#123;</span><br><span class="line">    <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;accumulateWorkTime&quot;</span>, workTime);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="累積工作時間-從-local-strage-抓取紀錄的值"><a href="#累積工作時間-從-local-strage-抓取紀錄的值" class="headerlink" title="累積工作時間 從 local strage 抓取紀錄的值"></a>累積工作時間 從 local strage 抓取紀錄的值</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> workTimeAlarm = $(<span class="string">&#x27;input[id=&quot;work-time-alarm&quot;]&#x27;</span>).<span class="title function_">val</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (workTime) &#123;</span><br><span class="line">  <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  workTime = <span class="number">0</span>;</span><br><span class="line">  <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;accumulateWorkTime&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="設定VScode-comment的顏色"><a href="#設定VScode-comment的顏色" class="headerlink" title="設定VScode comment的顏色"></a>設定VScode comment的顏色</h2><p>因為都灰灰的 看起來眼睛好累</p>
+<p><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24627/">vscode 修改註釋顏色</a></p>
+<p>以下文字引用自原文</p>
+<ul>
+<li>安裝一個第三方主題 ,比如我喜歡的bimbo</li>
+<li>theme目錄：C:&#x2F;Users&#x2F;admin&#x2F;.vscode&#x2F;extensions 這個目錄，選安裝了的主題，</li>
+<li>比如我用的bimbo，然後進入下面目錄，並修改pawelgrzybek.bimbo-theme-0.2.0\themes\bimbo-theme-color-theme.json</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%95%AA%E8%8C%84%E9%90%98(3)/" rel="prev" title="5/26 寫出一個番茄鐘(三)-偵測輸入內容/停止鍵/readonly">
+      <i class="fa fa-chevron-left"></i> 5/26 寫出一個番茄鐘(三)-偵測輸入內容/停止鍵/readonly
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E7%95%AA%E8%8C%84%E9%90%984/" rel="next" title="5/27 寫出一個番茄鐘(四)-pure.css 改善頁面">
+      5/27 寫出一個番茄鐘(四)-pure.css 改善頁面 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">成果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">2.</span> <span class="nav-text">心得</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E8%AA%AA%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">邏輯說明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%B5%E6%B8%AC%E8%BC%B8%E5%85%A5%E6%95%B8%E5%AD%97-%E5%88%A4%E6%96%B7%E6%AD%A3%E7%A2%BA%E8%BC%B8%E5%85%A5"><span class="nav-number">3.1.</span> <span class="nav-text">偵測輸入數字 判斷正確輸入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E9%A0%81%E9%9D%A2%E8%BC%B8%E5%85%A5%E7%9A%84%E6%99%82%E9%96%93%E5%BD%A2%E6%88%90%E5%8F%AF%E7%94%A8%E7%9A%84%E8%B3%87%E6%96%99"><span class="nav-number">3.2.</span> <span class="nav-text">將頁面輸入的時間形成可用的資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%B7%E7%95%B6%E5%89%8D%E7%A7%92%E6%95%B8-%E6%94%B9%E8%AE%8A%E9%A0%81%E9%9D%A2%E7%9A%84%E7%8B%80%E6%85%8B"><span class="nav-number">3.3.</span> <span class="nav-text">判斷當前秒數 改變頁面的狀態</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E7%B4%AF%E7%A9%8D%E5%B7%A5%E4%BD%9C%E6%99%82%E9%96%93"><span class="nav-number">3.4.</span> <span class="nav-text">計算累積工作時間</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%8F%E4%B8%80%E7%A7%92%E6%94%B9%E8%AE%8A%E7%9A%84%E5%8F%83%E6%95%B8-%E8%A8%88%E6%99%82"><span class="nav-number">3.5.</span> <span class="nav-text">每一秒改變的參數(計時</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E7%A7%92%E6%95%B8%E8%BD%89%E7%82%BA%E6%99%82%E5%88%86%E7%A7%92-%E5%B0%87%E6%96%87%E5%AD%97%E6%8F%92%E5%85%A5%E9%A0%81%E9%9D%A2"><span class="nav-number">3.6.</span> <span class="nav-text">將秒數轉為時分秒 + 將文字插入頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E7%B4%AF%E7%A9%8D%E5%B7%A5%E4%BD%9C%E6%99%82%E9%96%93%E6%8F%92%E5%85%A5%E5%88%B0-local-strage"><span class="nav-number">3.7.</span> <span class="nav-text">將累積工作時間插入到 local strage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E7%A9%8D%E5%B7%A5%E4%BD%9C%E6%99%82%E9%96%93-%E5%BE%9E-local-strage-%E6%8A%93%E5%8F%96%E7%B4%80%E9%8C%84%E7%9A%84%E5%80%BC"><span class="nav-number">3.8.</span> <span class="nav-text">累積工作時間 從 local strage 抓取紀錄的值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BC%8F-%E6%9C%AC%E6%AC%A1%E6%96%B0%E5%AD%B8%E6%9C%83%E7%9A%84"><span class="nav-number">4.</span> <span class="nav-text">使用程式(本次新學會的)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9AVScode-comment%E7%9A%84%E9%A1%8F%E8%89%B2"><span class="nav-number">4.1.</span> <span class="nav-text">設定VScode comment的顏色</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ellie Chen</p>
+  <div class="site-description" itemprop="description">放一些作品 還有學習紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ellie Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

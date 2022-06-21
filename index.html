@@ -147,108 +147,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/webpack/" class="post-title-link" itemprop="url">Webpack基礎-建立第一個檔案 /使用Loader</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-06-20 17:28:12 / 修改時間：17:42:07" itemprop="dateCreated datePublished" datetime="2022-06-20T17:28:12+08:00">2022-06-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://medium.com/i-am-mike/%E4%BB%80%E9%BA%BC%E6%98%AFwebpack-%E4%BD%A0%E9%9C%80%E8%A6%81webpack%E5%97%8E-2d8f9658241d">Webpack 教學 (一) ：什麼是 Webpack? 能吃嗎？</a></p>
-<ul>
-<li>載入</li>
-<li>建立第一個檔案</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://askie.today/what-is-webpack/">關於 Webpack，它是什麼？能夠做什麼？為什麼？怎麼做？- freeCodeCamp 的筆記</a></p>
-<ul>
-<li>loader</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://pjchender.dev/webpack/note-webpack/">pjchender.dev [note] Webpack 學習筆記
-</a></p>
-<ul>
-<li>很多內容</li>
-<li>非常細</li>
-</ul>
-<h1 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h1><h2 id="建立第一個檔案-步驟"><a href="#建立第一個檔案-步驟" class="headerlink" title="建立第一個檔案 步驟"></a>建立第一個檔案 步驟</h2><p><a target="_blank" rel="noopener" href="https://medium.com/i-am-mike/%E4%BB%80%E9%BA%BC%E6%98%AFwebpack-%E4%BD%A0%E9%9C%80%E8%A6%81webpack%E5%97%8E-2d8f9658241d">Webpack 教學 (一) ：什麼是 Webpack? 能吃嗎？</a></p>
-<h3 id="安裝-nodejs"><a href="#安裝-nodejs" class="headerlink" title="安裝 nodejs"></a>安裝 nodejs</h3><h3 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h3><h3 id="安裝-webpack"><a href="#安裝-webpack" class="headerlink" title="安裝 webpack"></a>安裝 webpack</h3><ul>
-<li>npm install webpack webpack-cli –save-dev</li>
-</ul>
-<h3 id="寫-webpack-的設定檔"><a href="#寫-webpack-的設定檔" class="headerlink" title="寫 webpack 的設定檔"></a>寫 webpack 的設定檔</h3><ul>
-<li>在專案資料夾下創立一個 webpack.config.js 跟 index.js 的檔案<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;index.bundle.js&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;./&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="寫個-js-語法"><a href="#寫個-js-語法" class="headerlink" title="寫個 js 語法"></a>寫個 js 語法</h3><h3 id="在-package-json-之中的-script-的部分加入-“build”-“webpack”"><a href="#在-package-json-之中的-script-的部分加入-“build”-“webpack”" class="headerlink" title="在 package.json 之中的 script 的部分加入 “build”: “webpack”"></a>在 package.json 之中的 script 的部分加入 “build”: “webpack”</h3><ul>
-<li>entry：是我們的進入點，我指定路徑是 index.js</li>
-<li>output：打包輸出後的檔案，檔名在 index 後面加了個 bundle，來確認它是打包過後的檔案。</li>
-</ul>
-<h3 id="指令-npm-run-build"><a href="#指令-npm-run-build" class="headerlink" title="指令: npm run build"></a>指令: npm run build</h3><h2 id="資料夾名稱-解釋"><a href="#資料夾名稱-解釋" class="headerlink" title="資料夾名稱 解釋:"></a>資料夾名稱 解釋:</h2><h3 id="src-專門放我們-Preprocess-的檔案，包括-es6、pug、sass、vue、jsx-等檔案，這個資料夾不會丟上去-server-部署。"><a href="#src-專門放我們-Preprocess-的檔案，包括-es6、pug、sass、vue、jsx-等檔案，這個資料夾不會丟上去-server-部署。" class="headerlink" title="src : 專門放我們 Preprocess 的檔案，包括 es6、pug、sass、vue、jsx 等檔案，這個資料夾不會丟上去 server 部署。"></a>src : 專門放我們 Preprocess 的檔案，包括 es6、pug、sass、vue、jsx 等檔案，這個資料夾不會丟上去 server 部署。</h3><h3 id="dist-經過-webpack-編譯打包後，產生出瀏覽器看得懂的-html、css、js，要部署也是這個資料夾去部署。"><a href="#dist-經過-webpack-編譯打包後，產生出瀏覽器看得懂的-html、css、js，要部署也是這個資料夾去部署。" class="headerlink" title="dist : 經過 webpack 編譯打包後，產生出瀏覽器看得懂的 html、css、js，要部署也是這個資料夾去部署。"></a>dist : 經過 webpack 編譯打包後，產生出瀏覽器看得懂的 html、css、js，要部署也是這個資料夾去部署。</h3><h2 id="檔案名稱-解釋"><a href="#檔案名稱-解釋" class="headerlink" title="檔案名稱 解釋:"></a>檔案名稱 解釋:</h2><h3 id="node-modules-：就是我們透過-npm-下載下來的套件跟工具都會放在這個資料夾"><a href="#node-modules-：就是我們透過-npm-下載下來的套件跟工具都會放在這個資料夾" class="headerlink" title="node_modules ：就是我們透過 npm 下載下來的套件跟工具都會放在這個資料夾"></a>node_modules ：就是我們透過 npm 下載下來的套件跟工具都會放在這個資料夾</h3><h3 id="package-json：關於這整包專案所有的資訊，包含我們安裝的套件版本"><a href="#package-json：關於這整包專案所有的資訊，包含我們安裝的套件版本" class="headerlink" title="package.json：關於這整包專案所有的資訊，包含我們安裝的套件版本"></a>package.json：關於這整包專案所有的資訊，包含我們安裝的套件版本</h3><h3 id="package-lock-json：package-lock-json-是-npm5-版本新增的，是專門紀錄-package-json-裡面更細節的內容，"><a href="#package-lock-json：package-lock-json-是-npm5-版本新增的，是專門紀錄-package-json-裡面更細節的內容，" class="headerlink" title="package-lock.json：package-lock.json 是 npm5 版本新增的，是專門紀錄 package.json 裡面更細節的內容，"></a>package-lock.json：package-lock.json 是 npm5 版本新增的，是專門紀錄 package.json 裡面更細節的內容，</h3><h2 id="什麼是-Loader？"><a href="#什麼是-Loader？" class="headerlink" title="**什麼是 Loader？**"></a>*<strong>*什麼是 Loader？**</strong></h2><ul>
-<li>我們可以引入 .js 以外的其他類型檔案，</li>
-</ul>
-<h2 id="怎樣使用-Loader？步驟"><a href="#怎樣使用-Loader？步驟" class="headerlink" title="怎樣使用 **Loader？步驟**"></a>怎樣使用 *<strong>*Loader？步驟**</strong></h2><h3 id="建立一個-css-檔案"><a href="#建立一個-css-檔案" class="headerlink" title="建立一個 .css 檔案"></a>建立一個 .css 檔案</h3><ul>
-<li>放在&#x2F;src</li>
-</ul>
-<h3 id="npm-install-–save-dev-style-loader-css-loader"><a href="#npm-install-–save-dev-style-loader-css-loader" class="headerlink" title="npm install –save-dev style-loader css-loader"></a>npm install –save-dev style-loader css-loader</h3><h3 id="新增-css-loader-規則"><a href="#新增-css-loader-規則" class="headerlink" title="**新增 css-loader 規則**"></a>*<strong>*新增 css-loader 規則**</strong></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="comment">// 正則式，$ 用以表示以 .css 結尾的檔案，反斜線是跳脫字元</span></span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>css-loader：先取得你的 CSS 樣式，把它變成 JavaScript。</li>
-<li>style-loader：將轉譯的 JavaScript 變成真正的 CSS 樣式，透過 <style> tag 插入你的 DOM tree。</li>
-<li>而 webpack 編譯時，從陣列的最後一個開始往前執行，<ul>
-<li>了解流程之後，之後 Loader 的使用順序是有差異的喔！</li>
-</ul>
-</li>
-</ul>
-<h3 id="引入-CSS-到-index-js"><a href="#引入-CSS-到-index-js" class="headerlink" title="**引入 CSS 到 index.js**"></a>*<strong>*引入 CSS 到 index.js**</strong></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mainCSS &#125; <span class="keyword">from</span> <span class="string">&#x27;./main.css&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="npm-run-build"><a href="#npm-run-build" class="headerlink" title="$ npm run build"></a>$ npm run build</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/css-nth-child/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1196,10 +1094,143 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/RWD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RWD/" class="post-title-link" itemprop="url">RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 23:22:40" itemprop="dateCreated datePublished" datetime="2022-06-02T23:22:40+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:56:10" itemprop="dateModified" datetime="2022-06-08T18:56:10+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://izzysixxofai.pixnet.net/blog/post/288639248-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8Erwd%E6%95%99%E5%AD%B8%28%E4%B8%80%29rwd%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5">前端工程師基礎 RWD 教學(一)RWD 基礎概念 @ 重金屬 AI 工程師的 Coding 分享 :: 痞客邦 ::</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Basic-Concept.html">前端工程師的基礎 RWD 教學(一)RWD 基礎概念</a></p>
+<h1 id="什麼是-RWD"><a href="#什麼是-RWD" class="headerlink" title="什麼是 RWD"></a>什麼是 RWD</h1><ul>
+<li>網頁的各種元素，以可以縮放、浮動的區塊來做配置，讓網頁中的各種元素，能隨著不同的瀏覽介面，而自動縮放大小以及調整排版。</li>
+<li>響應式網站 (RWD) 是基於核心三個概念的技術的組合:<ul>
+<li>流動布局（Fluid Grid）</li>
+<li>流動圖片 (Fluid Images)</li>
+<li>及媒體查詢（Media Queries）</li>
+</ul>
+</li>
+</ul>
+<h1 id="建構-RWD-網站的第一步"><a href="#建構-RWD-網站的第一步" class="headerlink" title="建構 RWD 網站的第一步"></a>建構 RWD 網站的第一步</h1><ul>
+<li>在 HTML 開始的地方加入「Viewport」語法。語法如下：<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=0.5, user-scalable=no&quot;&gt;</code></li>
+<li>width&#x3D;device-width</li>
+<li>initial-scale&#x3D;1.0 「初始的比例」</li>
+<li>maximum-scale&#x3D;1.5 最大的縮放尺寸</li>
+<li>minimum-scale&#x3D;0.5 最小的縮放尺寸」</li>
+<li>user-scalable&#x3D;no 是否允許使用者自行縮放</li>
+</ul>
+<h1 id="核心三個概念-流動布局（Fluid-Grid）"><a href="#核心三個概念-流動布局（Fluid-Grid）" class="headerlink" title="核心三個概念 : 流動布局（Fluid Grid）"></a>核心三個概念 : 流動布局（Fluid Grid）</h1><ul>
+<li>在流動布局中，寬度也常以百分比 (%) 為單位</li>
+</ul>
+<h2 id="流動圖片-Fluid-Images"><a href="#流動圖片-Fluid-Images" class="headerlink" title="流動圖片 (Fluid Images)"></a>流動圖片 (Fluid Images)</h2><ul>
+<li>流以百分比 (%) 為單位。</li>
+<li>在 RWD 網頁中圖片的顯示方式有兩種，<ul>
+<li>一種是傳統的「<code>&lt;img&gt;</code>」標籤，</li>
+<li>另一種就是直接使用 CSS 的背景圖。</li>
+</ul>
+</li>
+<li>使用「<code>&lt;img&gt;</code>」標籤時<ul>
+<li>只需將其 width 或是 height 其中一個尺寸設定為百分比 ( % )，</li>
+<li>另一個則設為 auto 則可以達到 RWD 的效果，</li>
+<li>範例如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">80%</span>; <span class="comment">/*最大寬度設為 80% 而不是 100%，是為了避免圖片糊掉*/</span></span><br><span class="line">  <span class="attribute">height</span>: auto; <span class="comment">/*高度設為 auto 好讓圖片可以等比例縮放*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>CSS3 的新屬性「background-size」<ul>
+<li>可以指定背景圖片的大小是否可填滿整個容器<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="核心三個概念-Liquid-Layout-液態排版"><a href="#核心三個概念-Liquid-Layout-液態排版" class="headerlink" title="核心三個概念 : Liquid Layout (液態排版)"></a>核心三個概念 : Liquid Layout (液態排版)</h1><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Fluid-Grid.html">前端工程師的基礎 RWD 教學(二)流動布局 Fluid Grid</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>｛ <span class="attribute">width</span>: <span class="number">36%</span> ｝</span><br></pre></td></tr></table></figure>
+
+<h1 id="核心三個概念-媒體查詢（Media-Queries）"><a href="#核心三個概念-媒體查詢（Media-Queries）" class="headerlink" title="核心三個概念 : 媒體查詢（Media Queries）"></a>核心三個概念 : 媒體查詢（Media Queries）</h1><ul>
+<li>就是網頁會先「查詢（query)」「媒體 ( media )」的屬性，再針對這些屬性值而決定要給網頁什麼樣的樣式</li>
+</ul>
+<h2 id="Media-Query-使用方法"><a href="#Media-Query-使用方法" class="headerlink" title="Media Query 使用方法"></a>Media Query 使用方法</h2><h3 id="HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小："><a href="#HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小：" class="headerlink" title="HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小："></a>HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小：</h3><ul>
+<li><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen and (max-device-width: 400px)&quot; href=&quot;Screen.css&quot;&gt;</code></li>
+</ul>
+<h3 id="CSS-中使用"><a href="#CSS-中使用" class="headerlink" title="CSS 中使用"></a>CSS 中使用</h3><ul>
+<li>＠media screen and (max-device-width: 400px){…}</li>
+<li>補充<br><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-3.html">前端工程師的基礎 RWD 教學(五)Media Query 基礎之 and&#x2F;not&#x2F;only 判斷條件</a></li>
+</ul>
+<h3 id="也可使用-import"><a href="#也可使用-import" class="headerlink" title="也可使用 @import"></a>也可使用 @import</h3><ul>
+<li>@import “screen.css” screen and (max-device-width: 400px)</li>
+</ul>
+<h2 id="常用媒體類型-media-type-的為"><a href="#常用媒體類型-media-type-的為" class="headerlink" title="常用媒體類型 (media-type) 的為"></a>常用媒體類型 (media-type) 的為</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-2.html"></a></p>
+<ul>
+<li>all (所有裝置)、</li>
+<li>screen (螢幕裝置)、</li>
+<li>print (印刷裝置)</li>
+</ul>
+<h2 id="常見媒體特徵-Media-Features-有"><a href="#常見媒體特徵-Media-Features-有" class="headerlink" title="常見媒體特徵 (Media Features) 有"></a>常見媒體特徵 (Media Features) 有</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-4.html">前端工程師的基礎 RWD 教學(六)Media Query 基礎之 Media Features-上</a></p>
+<ul>
+<li>min-width (最小寬度)、</li>
+<li>max-width (最大寬度) 、</li>
+<li>resolution (解析度)、</li>
+<li>color (顏色) 等。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1265,7 +1296,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

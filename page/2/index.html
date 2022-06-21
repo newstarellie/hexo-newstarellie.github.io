@@ -147,6 +147,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/postCSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/postCSS/" class="post-title-link" itemprop="url">什麼是 PostCSS？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 23:28:35" itemprop="dateCreated datePublished" datetime="2022-06-02T23:28:35+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:58:06" itemprop="dateModified" datetime="2022-06-08T18:58:06+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://cythilya.github.io/2018/08/10/postcss/">PostCSS | Summer。桑莫。夏天</a></p>
+<h1 id="後處理器"><a href="#後處理器" class="headerlink" title="後處理器"></a>後處理器</h1><h2 id="Postprocessors-的功能"><a href="#Postprocessors-的功能" class="headerlink" title="Postprocessors 的功能"></a>Postprocessors 的功能</h2><ul>
+<li>加入各家瀏覽器的前綴詞（prefix），例如：-webkit-、-moz-。</li>
+<li>將先進的功能轉為目前主流瀏覽器所能支援的語法。</li>
+</ul>
+<h1 id="Preprocessors-vs-Postprocessors-的區別"><a href="#Preprocessors-vs-Postprocessors-的區別" class="headerlink" title="Preprocessors vs Postprocessors 的區別"></a>Preprocessors vs Postprocessors 的區別</h1><ul>
+<li>Preprocessors 預處理:<ul>
+<li>為了彌補 CSS 在大型專案維護性的不足，CSS 預處理器中新增了變數、混入、繼承、嵌套等寫法，</li>
+<li>讓開發者可以更有結構地撰寫簡潔、清晰且好維護的 CSS 程式碼。</li>
+</ul>
+</li>
+<li>Postprocessors 後處理<ul>
+<li>加入前綴詞</li>
+<li>詳情請看文章<br><a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/css-preprocessor-sass-scss">Sass&#x2F;SCSS 基本語法介紹，搞懂 CSS 預處理器｜ ALPHA Camp Blog</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4eaee43b-5ef5-4d98-966c-8e4fa57ded62/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T105733Z&X-Amz-Expires=86400&X-Amz-Signature=28985ba87ec3b0abc24997b205f0232163a1020f92a337493d0e735850547b07&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject"></p>
+<h1 id="如何加入-PostCSS？"><a href="#如何加入-PostCSS？" class="headerlink" title="如何加入 PostCSS？"></a>如何加入 PostCSS？</h1><h2 id="安裝-PostCSS-與相關套件。"><a href="#安裝-PostCSS-與相關套件。" class="headerlink" title="安裝 PostCSS 與相關套件。"></a>安裝 PostCSS 與相關套件。</h2><p><code>npm install postcss postcss-loader autoprefixer precss --save-dev</code></p>
+<h2 id="在-Webpack-設定檔加入-postcss-loader。"><a href="#在-Webpack-設定檔加入-postcss-loader。" class="headerlink" title="在 Webpack 設定檔加入 postcss-loader。"></a>在 Webpack 設定檔加入 postcss-loader。</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  <span class="attr">use</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;postcss-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/RWD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1266,138 +1350,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(%E7%B8%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%95%AA%E8%8C%84%E9%90%98(%E7%B8%BD/" class="post-title-link" itemprop="url">做出一個網頁版的番茄鐘</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-05-25 14:48:24" itemprop="dateCreated datePublished" datetime="2022-05-25T14:48:24+08:00">2022-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-05-26 12:45:53" itemprop="dateModified" datetime="2022-05-26T12:45:53+08:00">2022-05-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="總體的步驟"><a href="#總體的步驟" class="headerlink" title="總體的步驟"></a>總體的步驟</h1><ul>
-<li>先寫出想做什麼<ul>
-<li>想有什麼功能<ul>
-<li>最好詳細形容一下 比較好做</li>
-</ul>
-</li>
-<li>畫面大概長怎樣<ul>
-<li>可以找出頁面的範本</li>
-<li>或是畫示意圖</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>HTML CSS 先做出畫面</li>
-<li>JS 寫功能<ul>
-<li>可以將功能 分成1.0 以及 2.0版本</li>
-<li>先做出1.0 最簡單的頁面</li>
-<li>再慢慢進階到2.0</li>
-</ul>
-</li>
-<li>JS 遇到不會寫的功能 先記下來<ul>
-<li>查不會的部分<br>1. 將查到資料的寫在筆記<br>2. 寫一個簡單的頁面作為實驗<br>3. 將成果記錄到notion<br>4. 整合到項目裡面</li>
-</ul>
-</li>
-<li>其他Tips<ul>
-<li>想到新的點子就先寫下來 之後再安排時間實踐</li>
-<li>每天反思今天的工作流程</li>
-<li>每天總結今天自己做出的事情</li>
-<li>每天將作品push 到Git hub上面 當作紀錄</li>
-<li>注意休息 一定要有時間放空 可以讓腦袋自己去整理思緒</li>
-</ul>
-</li>
-</ul>
-<h1 id="想寫出的功能"><a href="#想寫出的功能" class="headerlink" title="想寫出的功能"></a>想寫出的功能</h1><ul>
-<li><p>計時功能</p>
-<ul>
-<li>點擊開始計時 就要開始這個鬧鐘</li>
-<li>鬧鐘結束之後要自動進入下一個鬧鐘</li>
-<li>結束工作鬧鐘之後 要累計時間<ul>
-<li>設定local storage存到裡面</li>
-</ul>
-</li>
-<li>暫停的按鈕 跟功能</li>
-<li>可設定循環次數  自動撥放循環幾次</li>
-</ul>
-</li>
-<li><p>輸入</p>
-<ul>
-<li>抓到輸入的數字 變成計時時間<ul>
-<li>設定的數字不能小於0</li>
-</ul>
-</li>
-<li>設定結束提醒 將文字轉成語音 播放出來</li>
-</ul>
-</li>
-<li><p>版面</p>
-<ul>
-<li>顯示倒數計時</li>
-<li>設定默認工作時間</li>
-<li>可以設定靜音模式</li>
-<li>設定開始聲音</li>
-<li>設定計時聲音</li>
-<li>工作時間紅色 &#x2F; 休息時間綠色</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/VwQrLEV?editors=1111">累積工作時間</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1467,7 +1419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

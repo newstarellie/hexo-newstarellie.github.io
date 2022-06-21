@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"newstarellie.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="版權說明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章[FE201] 前端中階：那些前端會用到的工具們  課程  [week 13] 前端工具之二 - CSS 預處理器、Babel  [FE201] 前端中階的總結筆記  Install Sass  內文說明怎樣安裝  使用 SASS(SCSS)建立自己的 CSS Library :: 202">
+<meta property="og:type" content="article">
+<meta property="og:title" content="學習Sass基礎1 --Sass是什麼 如何引入">
+<meta property="og:url" content="https://newstarellie.github.io/Sass-basic/">
+<meta property="og:site_name" content="Ellie&#39;s Blog">
+<meta property="og:description" content="版權說明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章[FE201] 前端中階：那些前端會用到的工具們  課程  [week 13] 前端工具之二 - CSS 預處理器、Babel  [FE201] 前端中階的總結筆記  Install Sass  內文說明怎樣安裝  使用 SASS(SCSS)建立自己的 CSS Library :: 202">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4eaee43b-5ef5-4d98-966c-8e4fa57ded62/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T100539Z&X-Amz-Expires=86400&X-Amz-Signature=da5fa5fe36e4b931d69e0c88e5048cd2111e111aeee890e419d35df90266e91a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/97c2422d-701a-4a0a-8ad1-eb12d7eca664/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T101302Z&X-Amz-Expires=86400&X-Amz-Signature=2131a23979c7539a1e9a9140dde486f91a318d3accc511cc8c01facd72e29f73&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="article:published_time" content="2022-06-02T10:13:29.000Z">
+<meta property="article:modified_time" content="2022-06-08T10:13:24.029Z">
+<meta property="article:author" content="Ellie Chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4eaee43b-5ef5-4d98-966c-8e4fa57ded62/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T100539Z&X-Amz-Expires=86400&X-Amz-Signature=da5fa5fe36e4b931d69e0c88e5048cd2111e111aeee890e419d35df90266e91a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+
+<link rel="canonical" href="https://newstarellie.github.io/Sass-basic/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>學習Sass基礎1 --Sass是什麼 如何引入 | Ellie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ellie's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/Sass-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          學習Sass基礎1 --Sass是什麼 如何引入
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 18:13:29" itemprop="dateCreated datePublished" datetime="2022-06-02T18:13:29+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:13:24" itemprop="dateModified" datetime="2022-06-08T18:13:24+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="版權說明"><a href="#版權說明" class="headerlink" title="版權說明"></a>版權說明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://lidemy.com/p/fe201">[FE201] 前端中階：那些前端會用到的工具們</a></p>
+<ul>
+<li>課程</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://heidiliu2020.github.io/sass-babel/">[week 13] 前端工具之二 - CSS 預處理器、Babel</a></p>
+<ul>
+<li>[FE201] 前端中階的總結筆記</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://sass-lang.com/install">Install Sass</a></p>
+<ul>
+<li>內文說明怎樣安裝</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20141363/ironman/4590">使用 SASS(SCSS)建立自己的 CSS Library :: 2021 iThome 鐵人賽</a></p>
+<ul>
+<li>講解 Sass 的觀念時順便做出一套 CSS Library</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10244301">[CSS] Sass 入門教學-新手上路重點摘要(上) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
+<ul>
+<li>scss 的基礎寫法</li>
+</ul>
+<h1 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h1><h2 id="線上轉檔"><a href="#線上轉檔" class="headerlink" title="線上轉檔"></a><strong>線上轉檔</strong></h2><ul>
+<li>SCSS<br><a target="_blank" rel="noopener" href="https://jsonformatter.org/scss-to-css">Best SCSS to CSS Converter Online</a></li>
+<li>SASS<br><a target="_blank" rel="noopener" href="https://codebeautify.org/sass-to-css-converter">SASS to CSS Converter Online</a></li>
+</ul>
+<h1 id="什麼是-CSS-預處理器？-3-58"><a href="#什麼是-CSS-預處理器？-3-58" class="headerlink" title="什麼是 CSS 預處理器？ (3:58)"></a><a target="_blank" rel="noopener" href="https://lidemy.com/courses/390624/lectures/23282519">什麼是 CSS 預處理器？ (3:58)</a></h1><p>幫 Css 編碼 用預處理器的語法 寫可以寫得更快 然後再轉成原本的 CSS</p>
+<p>跟後處理器不一樣</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4eaee43b-5ef5-4d98-966c-8e4fa57ded62/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T100539Z&X-Amz-Expires=86400&X-Amz-Signature=da5fa5fe36e4b931d69e0c88e5048cd2111e111aeee890e419d35df90266e91a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h3 id="為什麼要用-CSS-預處理器"><a href="#為什麼要用-CSS-預處理器" class="headerlink" title="為什麼要用 CSS 預處理器?"></a>為什麼要用 CSS 預處理器?</h3><ul>
+<li>方便 一次可已修改許多參數</li>
+<li>不用一直打{ } 或是重複的 class</li>
+<li>巢狀方便閱讀</li>
+</ul>
+<h3 id="CSS-在開發上可能遇到哪些問題"><a href="#CSS-在開發上可能遇到哪些問題" class="headerlink" title="CSS 在開發上可能遇到哪些問題?"></a>CSS 在開發上可能遇到哪些問題?</h3><ul>
+<li>全域會互相干擾<ul>
+<li>例如：在 index.html 同時引入 main.css 和 normalize.css 可能會互相干擾，不易進行 debug 與維護</li>
+</ul>
+</li>
+<li>沒有變數<ul>
+<li>現在有 CSS Variable</li>
+</ul>
+</li>
+<li>沒有辦法組合</li>
+</ul>
+<h1 id="SASS-寫一個專案會怎樣寫"><a href="#SASS-寫一個專案會怎樣寫" class="headerlink" title="SASS 寫一個專案會怎樣寫?"></a>SASS 寫一個專案會怎樣寫?</h1><h2 id="把功能都分開-然後引入到-main"><a href="#把功能都分開-然後引入到-main" class="headerlink" title="把功能都分開 然後引入到 main"></a>把功能都分開 然後引入到 main</h2><ul>
+<li>可以讓你清楚的管理你的 css，再者之後你需要重複的樣式，即可直接帶入</li>
+<li>將分出的區塊以  <code>@import</code>  引入，完成後將所有檔案打包</li>
+</ul>
+<h2 id="main-css-通常由下列要素組成："><a href="#main-css-通常由下列要素組成：" class="headerlink" title="main.css 通常由下列要素組成："></a>main.css 通常由下列要素組成：</h2><ol>
+<li>utils：整理出常用的 variables（背景顏色等）和 mixins（垂直至中、對齊等樣式功能）</li>
+<li>Components：整理跨頁元件</li>
+<li>Layouts：獨立的大元件</li>
+<li>Pages</li>
+<li>其他樣式：themes（dark mode）、vendors（bootstrap css）</li>
+</ol>
+<h1 id="SASS-跟-SCSS-的區別"><a href="#SASS-跟-SCSS-的區別" class="headerlink" title="SASS 跟 SCSS 的區別"></a>SASS 跟 SCSS 的區別</h1><p>SASS 更簡潔 省去{}</p>
+<p>還有其他處理器可用 要用在查</p>
+<p>圖片來源:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.hellosanta.com.tw/%E7%B6%B2%E7%AB%99%E8%A8%AD%E8%A8%88/%E5%89%8D%E7%AB%AF/%E4%B8%80%E8%B5%B7%E4%BE%86%E7%94%A8sasscompass%E5%90%A7%EF%BC%8C%E6%88%91%E5%80%91%E5%8F%AF%E6%98%AF%E4%B8%80%E7%A7%92%E5%B9%BE%E5%8D%83%E8%90%AC%E4%B8%8A%E4%B8%8B%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%EF%BC%8C%E6%80%8E%E9%BA%BC%E8%83%BD%E6%8A%8A%E6%99%82%E9%96%93%E6%B5%AA%E8%B2%BB%E5%9C%A8css%E8%BA%AB%E4%B8%8A%E5%91%A2%EF%BC%81">一起來用 Sass+Compass 吧，我們可是一秒幾千萬上下的前端工程師，怎麼能把時間浪費在 css 身上呢！</a></p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/97c2422d-701a-4a0a-8ad1-eb12d7eca664/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T101302Z&X-Amz-Expires=86400&X-Amz-Signature=2131a23979c7539a1e9a9140dde486f91a318d3accc511cc8c01facd72e29f73&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h1 id="怎樣引入-相關語法"><a href="#怎樣引入-相關語法" class="headerlink" title="怎樣引入 相關語法"></a>怎樣引入 <strong>相關語法</strong></h1><h2 id="安裝-Sass"><a href="#安裝-Sass" class="headerlink" title="安裝 Sass"></a>安裝 Sass</h2><p><code>npm install -g sass</code></p>
+<p><code>-g</code>  表示在全域安裝</p>
+<h2 id="一次性編譯"><a href="#一次性編譯" class="headerlink" title="一次性編譯"></a>一次性編譯</h2><p><code>sass main.sass main.css</code></p>
+<p>將 main.sass 檔編譯成 main.css</p>
+<h2 id="watch-模式"><a href="#watch-模式" class="headerlink" title="watch 模式"></a>watch 模式</h2><p><code>sass --watch main.sass main.css</code></p>
+<p>每次存檔均會自動進行編譯</p>
+<h2 id="壓縮功能"><a href="#壓縮功能" class="headerlink" title="壓縮功能"></a>壓縮功能</h2><p><code>sass --style=compressed mais.sass main.css</code></p>
+<p>通常是在開發最後才會執行</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%95%AA%E8%8C%84%E9%90%984/" rel="prev" title="5/27 寫出一個番茄鐘(四)-pure.css 改善頁面">
+      <i class="fa fa-chevron-left"></i> 5/27 寫出一個番茄鐘(四)-pure.css 改善頁面
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Sass-basic2/" rel="next" title="學習Sass基礎2 -- 語法">
+      學習Sass基礎2 -- 語法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%AC%8A%E8%AA%AA%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">版權說明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E6%98%AF%E5%B0%87%E6%96%87%E7%AB%A0%E5%85%A7%E5%AE%B9%E6%95%B4%E7%90%86%E6%BF%83%E7%B8%AE%EF%BC%8C%E4%BD%9C%E7%82%BA%E5%AD%B8%E7%BF%92%E4%B9%8B%E7%94%A8%EF%BC%8C%E4%B8%8B%E6%96%87%E6%9C%83%E4%B8%80%E4%B8%80%E9%99%84%E4%B8%8A%E5%8E%9F%E6%96%87%E9%80%A3%E7%B5%90%EF%BC%8C%E5%A6%82%E6%9C%89%E4%BE%B5%E6%AC%8A%EF%BC%8C%E7%B6%93%E5%91%8A%E7%9F%A5%E4%B9%8B%E5%BE%8C%E6%9C%83%E7%AB%8B%E5%8D%B3%E6%92%A4%E4%B8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%96%87%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">引用文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">其他工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B7%9A%E4%B8%8A%E8%BD%89%E6%AA%94"><span class="nav-number">3.1.</span> <span class="nav-text">線上轉檔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-CSS-%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8%EF%BC%9F-3-58"><span class="nav-number">4.</span> <span class="nav-text">什麼是 CSS 預處理器？ (3:58)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E7%94%A8-CSS-%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8"><span class="nav-number">4.0.1.</span> <span class="nav-text">為什麼要用 CSS 預處理器?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E5%9C%A8%E9%96%8B%E7%99%BC%E4%B8%8A%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E5%93%AA%E4%BA%9B%E5%95%8F%E9%A1%8C"><span class="nav-number">4.0.2.</span> <span class="nav-text">CSS 在開發上可能遇到哪些問題?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SASS-%E5%AF%AB%E4%B8%80%E5%80%8B%E5%B0%88%E6%A1%88%E6%9C%83%E6%80%8E%E6%A8%A3%E5%AF%AB"><span class="nav-number">5.</span> <span class="nav-text">SASS 寫一個專案會怎樣寫?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E5%8A%9F%E8%83%BD%E9%83%BD%E5%88%86%E9%96%8B-%E7%84%B6%E5%BE%8C%E5%BC%95%E5%85%A5%E5%88%B0-main"><span class="nav-number">5.1.</span> <span class="nav-text">把功能都分開 然後引入到 main</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-css-%E9%80%9A%E5%B8%B8%E7%94%B1%E4%B8%8B%E5%88%97%E8%A6%81%E7%B4%A0%E7%B5%84%E6%88%90%EF%BC%9A"><span class="nav-number">5.2.</span> <span class="nav-text">main.css 通常由下列要素組成：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SASS-%E8%B7%9F-SCSS-%E7%9A%84%E5%8D%80%E5%88%A5"><span class="nav-number">6.</span> <span class="nav-text">SASS 跟 SCSS 的區別</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%8E%E6%A8%A3%E5%BC%95%E5%85%A5-%E7%9B%B8%E9%97%9C%E8%AA%9E%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">怎樣引入 相關語法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Sass"><span class="nav-number">7.1.</span> <span class="nav-text">安裝 Sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E7%B7%A8%E8%AD%AF"><span class="nav-number">7.2.</span> <span class="nav-text">一次性編譯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watch-%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.3.</span> <span class="nav-text">watch 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%93%E7%B8%AE%E5%8A%9F%E8%83%BD"><span class="nav-number">7.4.</span> <span class="nav-text">壓縮功能</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ellie Chen</p>
+  <div class="site-description" itemprop="description">放一些作品 還有學習紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ellie Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

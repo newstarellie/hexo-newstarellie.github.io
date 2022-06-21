@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"newstarellie.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="CodePen成果5&#x2F;26 寫出一個番茄鐘(三)-偵測輸入內容&#x2F;停止鍵&#x2F;readonly 心得改變工作方法 列出想增加的功能 將功能排列重要程度 先實現重要的 寫程式之前 先將想法打出來  列舉可行的方案 防止實作時的混亂   新學會的功能 在空白頁面做實驗 再整合到頁面 用codePen紀錄學到的功能   頁面做出一些改變之後就先來寫文章 先整理出心得 寫文章之前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5&#x2F;26 寫出一個番茄鐘(三)-偵測輸入內容&#x2F;停止鍵&#x2F;readonly">
+<meta property="og:url" content="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(3)/">
+<meta property="og:site_name" content="Ellie&#39;s Blog">
+<meta property="og:description" content="CodePen成果5&#x2F;26 寫出一個番茄鐘(三)-偵測輸入內容&#x2F;停止鍵&#x2F;readonly 心得改變工作方法 列出想增加的功能 將功能排列重要程度 先實現重要的 寫程式之前 先將想法打出來  列舉可行的方案 防止實作時的混亂   新學會的功能 在空白頁面做實驗 再整合到頁面 用codePen紀錄學到的功能   頁面做出一些改變之後就先來寫文章 先整理出心得 寫文章之前">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-27T05:21:59.000Z">
+<meta property="article:modified_time" content="2022-05-27T08:32:20.880Z">
+<meta property="article:author" content="Ellie Chen">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(3)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>5/26 寫出一個番茄鐘(三)-偵測輸入內容/停止鍵/readonly | Ellie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ellie's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5/26 寫出一個番茄鐘(三)-偵測輸入內容/停止鍵/readonly
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-05-27 13:21:59 / 修改時間：16:32:20" itemprop="dateCreated datePublished" datetime="2022-05-27T13:21:59+08:00">2022-05-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="CodePen成果"><a href="#CodePen成果" class="headerlink" title="CodePen成果"></a>CodePen成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/jOZaJJa">5&#x2F;26 寫出一個番茄鐘(三)-偵測輸入內容&#x2F;停止鍵&#x2F;readonly</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><h2 id="改變工作方法"><a href="#改變工作方法" class="headerlink" title="改變工作方法"></a>改變工作方法</h2><ul>
+<li>列出想增加的功能</li>
+<li>將功能排列重要程度 先實現重要的</li>
+<li>寫程式之前 先將想法打出來 <ul>
+<li>列舉可行的方案</li>
+<li>防止實作時的混亂</li>
+</ul>
+</li>
+<li>新學會的功能 在空白頁面做實驗 再整合到頁面<ul>
+<li>用codePen紀錄學到的功能</li>
+</ul>
+</li>
+<li>頁面做出一些改變之後就先來寫文章 先整理出心得<ul>
+<li>寫文章之前 要先整理程式碼 </li>
+<li>用以改善工作流程</li>
+<li>用寫下文字的方式 複習近期所學的知識</li>
+</ul>
+</li>
+</ul>
+<h1 id="邏輯說明"><a href="#邏輯說明" class="headerlink" title="邏輯說明"></a>邏輯說明</h1><ul>
+<li>偵測輸入內容<ul>
+<li>使用change 一旦改變input內容就會重新抓到值</li>
+<li>加入判斷 如果內容等於0 或是空白 <ul>
+<li>就alert提示</li>
+<li>並且讓開始計時按鈕不可點擊</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>加入停止鍵 &amp; 按鈕disabled的切換<ul>
+<li>畫面載入時不可點擊 點擊’’開始計時’’之後才可以點擊</li>
+<li>開始計時之後 ‘’開始計時’’按鈕就不能點擊<ul>
+<li>以防計時混亂</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>readonly <ul>
+<li>開始計時之後就不可更改輸入內容<ul>
+<li>以防混亂</li>
+</ul>
+</li>
+<li>點擊’停止計時’就可以更改內容 </li>
+<li>((未來加上’’暫停’’按鈕時 也不可更改內容</li>
+</ul>
+</li>
+</ul>
+<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h2><p>在HTML標籤使用readonly 讓內容變成唯讀模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;input&quot;).attr(&quot;readonly&quot;, &quot;readonly&quot;);</span><br><span class="line"> $(&quot;input&quot;).removeAttr(&quot;readonly&quot;); //移除設定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="disabled"><a href="#disabled" class="headerlink" title="disabled"></a>disabled</h2><p>在HTML標籤使用disabled  讓按鈕不可使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).attr(&quot;disabled&quot;, &quot;disabled&quot;);</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%95%AA%E8%8C%84%E9%90%98(2)/" rel="prev" title="5/26 寫出一個番茄鐘(二)-改變背景顏色 /自動進入下個鬧鐘 /語音設定">
+      <i class="fa fa-chevron-left"></i> 5/26 寫出一個番茄鐘(二)-改變背景顏色 /自動進入下個鬧鐘 /語音設定
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CodePen%E6%88%90%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">CodePen成果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">2.</span> <span class="nav-text">心得</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%AE%8A%E5%B7%A5%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">改變工作方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E8%AA%AA%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">邏輯說明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BC%8F-%E6%9C%AC%E6%AC%A1%E6%96%B0%E5%AD%B8%E6%9C%83%E7%9A%84"><span class="nav-number">4.</span> <span class="nav-text">使用程式(本次新學會的)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#readonly"><span class="nav-number">4.1.</span> <span class="nav-text">readonly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled"><span class="nav-number">4.2.</span> <span class="nav-text">disabled</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ellie Chen</p>
+  <div class="site-description" itemprop="description">放一些作品 還有學習紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ellie Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

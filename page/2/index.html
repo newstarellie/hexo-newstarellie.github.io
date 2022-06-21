@@ -147,6 +147,373 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/postCSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/postCSS/" class="post-title-link" itemprop="url">什麼是 PostCSS？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 23:28:35" itemprop="dateCreated datePublished" datetime="2022-06-02T23:28:35+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:58:06" itemprop="dateModified" datetime="2022-06-08T18:58:06+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://cythilya.github.io/2018/08/10/postcss/">PostCSS | Summer。桑莫。夏天</a></p>
+<h1 id="後處理器"><a href="#後處理器" class="headerlink" title="後處理器"></a>後處理器</h1><h2 id="Postprocessors-的功能"><a href="#Postprocessors-的功能" class="headerlink" title="Postprocessors 的功能"></a>Postprocessors 的功能</h2><ul>
+<li>加入各家瀏覽器的前綴詞（prefix），例如：-webkit-、-moz-。</li>
+<li>將先進的功能轉為目前主流瀏覽器所能支援的語法。</li>
+</ul>
+<h1 id="Preprocessors-vs-Postprocessors-的區別"><a href="#Preprocessors-vs-Postprocessors-的區別" class="headerlink" title="Preprocessors vs Postprocessors 的區別"></a>Preprocessors vs Postprocessors 的區別</h1><ul>
+<li>Preprocessors 預處理:<ul>
+<li>為了彌補 CSS 在大型專案維護性的不足，CSS 預處理器中新增了變數、混入、繼承、嵌套等寫法，</li>
+<li>讓開發者可以更有結構地撰寫簡潔、清晰且好維護的 CSS 程式碼。</li>
+</ul>
+</li>
+<li>Postprocessors 後處理<ul>
+<li>加入前綴詞</li>
+<li>詳情請看文章<br><a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/css-preprocessor-sass-scss">Sass&#x2F;SCSS 基本語法介紹，搞懂 CSS 預處理器｜ ALPHA Camp Blog</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4eaee43b-5ef5-4d98-966c-8e4fa57ded62/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T105733Z&X-Amz-Expires=86400&X-Amz-Signature=28985ba87ec3b0abc24997b205f0232163a1020f92a337493d0e735850547b07&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject"></p>
+<h1 id="如何加入-PostCSS？"><a href="#如何加入-PostCSS？" class="headerlink" title="如何加入 PostCSS？"></a>如何加入 PostCSS？</h1><h2 id="安裝-PostCSS-與相關套件。"><a href="#安裝-PostCSS-與相關套件。" class="headerlink" title="安裝 PostCSS 與相關套件。"></a>安裝 PostCSS 與相關套件。</h2><p><code>npm install postcss postcss-loader autoprefixer precss --save-dev</code></p>
+<h2 id="在-Webpack-設定檔加入-postcss-loader。"><a href="#在-Webpack-設定檔加入-postcss-loader。" class="headerlink" title="在 Webpack 設定檔加入 postcss-loader。"></a>在 Webpack 設定檔加入 postcss-loader。</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  <span class="attr">use</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;postcss-loader&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/RWD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RWD/" class="post-title-link" itemprop="url">RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 23:22:40" itemprop="dateCreated datePublished" datetime="2022-06-02T23:22:40+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:56:10" itemprop="dateModified" datetime="2022-06-08T18:56:10+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://izzysixxofai.pixnet.net/blog/post/288639248-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8Erwd%E6%95%99%E5%AD%B8%28%E4%B8%80%29rwd%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5">前端工程師基礎 RWD 教學(一)RWD 基礎概念 @ 重金屬 AI 工程師的 Coding 分享 :: 痞客邦 ::</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Basic-Concept.html">前端工程師的基礎 RWD 教學(一)RWD 基礎概念</a></p>
+<h1 id="什麼是-RWD"><a href="#什麼是-RWD" class="headerlink" title="什麼是 RWD"></a>什麼是 RWD</h1><ul>
+<li>網頁的各種元素，以可以縮放、浮動的區塊來做配置，讓網頁中的各種元素，能隨著不同的瀏覽介面，而自動縮放大小以及調整排版。</li>
+<li>響應式網站 (RWD) 是基於核心三個概念的技術的組合:<ul>
+<li>流動布局（Fluid Grid）</li>
+<li>流動圖片 (Fluid Images)</li>
+<li>及媒體查詢（Media Queries）</li>
+</ul>
+</li>
+</ul>
+<h1 id="建構-RWD-網站的第一步"><a href="#建構-RWD-網站的第一步" class="headerlink" title="建構 RWD 網站的第一步"></a>建構 RWD 網站的第一步</h1><ul>
+<li>在 HTML 開始的地方加入「Viewport」語法。語法如下：<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=0.5, user-scalable=no&quot;&gt;</code></li>
+<li>width&#x3D;device-width</li>
+<li>initial-scale&#x3D;1.0 「初始的比例」</li>
+<li>maximum-scale&#x3D;1.5 最大的縮放尺寸</li>
+<li>minimum-scale&#x3D;0.5 最小的縮放尺寸」</li>
+<li>user-scalable&#x3D;no 是否允許使用者自行縮放</li>
+</ul>
+<h1 id="核心三個概念-流動布局（Fluid-Grid）"><a href="#核心三個概念-流動布局（Fluid-Grid）" class="headerlink" title="核心三個概念 : 流動布局（Fluid Grid）"></a>核心三個概念 : 流動布局（Fluid Grid）</h1><ul>
+<li>在流動布局中，寬度也常以百分比 (%) 為單位</li>
+</ul>
+<h2 id="流動圖片-Fluid-Images"><a href="#流動圖片-Fluid-Images" class="headerlink" title="流動圖片 (Fluid Images)"></a>流動圖片 (Fluid Images)</h2><ul>
+<li>流以百分比 (%) 為單位。</li>
+<li>在 RWD 網頁中圖片的顯示方式有兩種，<ul>
+<li>一種是傳統的「<code>&lt;img&gt;</code>」標籤，</li>
+<li>另一種就是直接使用 CSS 的背景圖。</li>
+</ul>
+</li>
+<li>使用「<code>&lt;img&gt;</code>」標籤時<ul>
+<li>只需將其 width 或是 height 其中一個尺寸設定為百分比 ( % )，</li>
+<li>另一個則設為 auto 則可以達到 RWD 的效果，</li>
+<li>範例如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">80%</span>; <span class="comment">/*最大寬度設為 80% 而不是 100%，是為了避免圖片糊掉*/</span></span><br><span class="line">  <span class="attribute">height</span>: auto; <span class="comment">/*高度設為 auto 好讓圖片可以等比例縮放*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>CSS3 的新屬性「background-size」<ul>
+<li>可以指定背景圖片的大小是否可填滿整個容器<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="核心三個概念-Liquid-Layout-液態排版"><a href="#核心三個概念-Liquid-Layout-液態排版" class="headerlink" title="核心三個概念 : Liquid Layout (液態排版)"></a>核心三個概念 : Liquid Layout (液態排版)</h1><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Fluid-Grid.html">前端工程師的基礎 RWD 教學(二)流動布局 Fluid Grid</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>｛ <span class="attribute">width</span>: <span class="number">36%</span> ｝</span><br></pre></td></tr></table></figure>
+
+<h1 id="核心三個概念-媒體查詢（Media-Queries）"><a href="#核心三個概念-媒體查詢（Media-Queries）" class="headerlink" title="核心三個概念 : 媒體查詢（Media Queries）"></a>核心三個概念 : 媒體查詢（Media Queries）</h1><ul>
+<li>就是網頁會先「查詢（query)」「媒體 ( media )」的屬性，再針對這些屬性值而決定要給網頁什麼樣的樣式</li>
+</ul>
+<h2 id="Media-Query-使用方法"><a href="#Media-Query-使用方法" class="headerlink" title="Media Query 使用方法"></a>Media Query 使用方法</h2><h3 id="HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小："><a href="#HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小：" class="headerlink" title="HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小："></a>HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小：</h3><ul>
+<li><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen and (max-device-width: 400px)&quot; href=&quot;Screen.css&quot;&gt;</code></li>
+</ul>
+<h3 id="CSS-中使用"><a href="#CSS-中使用" class="headerlink" title="CSS 中使用"></a>CSS 中使用</h3><ul>
+<li>＠media screen and (max-device-width: 400px){…}</li>
+<li>補充<br><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-3.html">前端工程師的基礎 RWD 教學(五)Media Query 基礎之 and&#x2F;not&#x2F;only 判斷條件</a></li>
+</ul>
+<h3 id="也可使用-import"><a href="#也可使用-import" class="headerlink" title="也可使用 @import"></a>也可使用 @import</h3><ul>
+<li>@import “screen.css” screen and (max-device-width: 400px)</li>
+</ul>
+<h2 id="常用媒體類型-media-type-的為"><a href="#常用媒體類型-media-type-的為" class="headerlink" title="常用媒體類型 (media-type) 的為"></a>常用媒體類型 (media-type) 的為</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-2.html"></a></p>
+<ul>
+<li>all (所有裝置)、</li>
+<li>screen (螢幕裝置)、</li>
+<li>print (印刷裝置)</li>
+</ul>
+<h2 id="常見媒體特徵-Media-Features-有"><a href="#常見媒體特徵-Media-Features-有" class="headerlink" title="常見媒體特徵 (Media Features) 有"></a>常見媒體特徵 (Media Features) 有</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-4.html">前端工程師的基礎 RWD 教學(六)Media Query 基礎之 Media Features-上</a></p>
+<ul>
+<li>min-width (最小寬度)、</li>
+<li>max-width (最大寬度) 、</li>
+<li>resolution (解析度)、</li>
+<li>color (顏色) 等。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/Sass-basic2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Sass-basic2/" class="post-title-link" itemprop="url">學習Sass基礎2 -- 語法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-02 18:39:10" itemprop="dateCreated datePublished" datetime="2022-06-02T18:39:10+08:00">2022-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-08 18:35:59" itemprop="dateModified" datetime="2022-06-08T18:35:59+08:00">2022-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權說明"><a href="#版權說明" class="headerlink" title="版權說明"></a>版權說明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://lidemy.com/p/fe201">[FE201] 前端中階：那些前端會用到的工具們</a></p>
+<ul>
+<li>課程</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://heidiliu2020.github.io/sass-babel/">[week 13] 前端工具之二 - CSS 預處理器、Babel</a></p>
+<ul>
+<li><strong>[FE201] 前端中階的總結筆記</strong></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://sass-lang.com/install">Install Sass</a></p>
+<ul>
+<li>內文說明怎樣安裝</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20141363/ironman/4590">使用 SASS(SCSS)建立自己的 CSS Library :: 2021 iThome 鐵人賽</a></p>
+<ul>
+<li>講解 Sass 的觀念時順便做出一套 CSS Library</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10244301">[CSS] Sass 入門教學-新手上路重點摘要(上) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
+<ul>
+<li>scss 的基礎寫法</li>
+</ul>
+<h1 id="參數與結構化-CSS"><a href="#參數與結構化-CSS" class="headerlink" title="參數與結構化 CSS"></a>參數與結構化 CSS</h1><h2 id="巢狀結構"><a href="#巢狀結構" class="headerlink" title="巢狀結構"></a>巢狀結構</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  color: red;</span><br><span class="line">  p &#123;</span><br><span class="line">    color: goldenrod;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 注意scss- 結尾要有; 否則轉檔的時候會出錯</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>CSS 屬性也可以巢狀</strong><br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/788fbe49-1ff1-42a6-87fa-12fc87e83ec0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103035Z&X-Amz-Expires=86400&X-Amz-Signature=90faaef1b067cc000d5089d756563a643487fa73bfb62bf0600d3ea281f18298&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></li>
+</ul>
+<h2 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$main-color:red;</span><br><span class="line">$second-color: yellow;</span><br><span class="line"></span><br><span class="line">h1 &#123;</span><br><span class="line">  color: $main-color;</span><br><span class="line">  p &#123;</span><br><span class="line">    color: $second-color;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="amp-符號接起父層"><a href="#amp-符號接起父層" class="headerlink" title="&amp;符號接起父層"></a>&amp;符號接起父層</h2><p>使用&amp;表示重複前面的 class</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h2&#123;</span><br><span class="line">  color: violet;</span><br><span class="line">  &amp;:hover&#123;</span><br><span class="line">    color: $main-color;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="模組化-CSS"><a href="#模組化-CSS" class="headerlink" title="模組化 CSS"></a>模組化 CSS</h1><h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><ul>
+<li>跟<code>extend</code>的區別?<ul>
+<li>可以引入參數</li>
+<li>可以把常見的功能設定進去 mixin</li>
+</ul>
+</li>
+<li>跟 <code>@function</code> 的區別?<ul>
+<li>與  <code>@mixin</code>  的不同之處，在於  <code>@function</code>  只會回傳一個值，而  <code>@mixin</code>  是回傳一段 CSS 程式碼</li>
+</ul>
+</li>
+<li>可帶入多個參數<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> fontsizeColor(<span class="variable">$size</span>, <span class="variable">$color</span>) &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1rem</span> * <span class="variable">$size</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> fontsizeColor(<span class="number">1</span>, <span class="variable">$main-color</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="extend-繼承"><a href="#extend-繼承" class="headerlink" title="extend 繼承"></a>extend 繼承</h2><ul>
+<li><p>注意不加上’ . ‘ 而是用%來代替</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%title &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> %title;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>後面的設定可以覆蓋<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c5b1eca0-3549-4ab2-8dd4-594f26152e5f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103205Z&X-Amz-Expires=86400&X-Amz-Signature=d93b2ff97f12b93dd323db469b4af5082fc003c8fdae8d975d60b2873c7cd2a2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+</li>
+</ul>
+<h2 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h2><p><a target="_blank" rel="noopener" href="https://hackmd.io/@yuci0213/r17cT6NiL#:~:text=7%EF%BC%8B1%E7%B5%90%E6%A7%8B-,%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86,-%E4%BE%9D%E5%B0%88%E6%A1%88%E6%89%80%E9%9C%80">SCSS&#x2F;CSS 學習筆記 - HackMD</a></p>
+<ul>
+<li><p>規劃檔案的結構</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(有底線代表不會被編譯成一支檔，合併使用)</span><br><span class="line">_variable.scss //專門放相關變數</span><br><span class="line">_mixin.scss //專門放相關mixin函式</span><br><span class="line">_mixinRwd.scss //rwd media</span><br><span class="line">_base.scss //全域設定SCSS</span><br><span class="line">_index.scss //專案頁面SCSS</span><br></pre></td></tr></table></figure></li>
+<li><p>建立一支 main.scss</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;variable&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;mixin&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;mixinRwd&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;base&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//你也可以建立分類的資料夾</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;/page/index&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;abstracts/variables&quot;</span>, <span class="string">&quot;abstracts/functions&quot;</span>, <span class="string">&quot;abstracts/mixins&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/function">SASS @function</a></p>
+<ul>
+<li><p>可以得到一個計算的直</p>
+</li>
+<li><p>然後再做引用<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e164f890-312d-4083-b37a-8723e5e1a7f9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103312Z&X-Amz-Expires=86400&X-Amz-Signature=628f95d135753f9caa32087cfd580ba5f2a70506d316804ac204f77af97a8cfa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject"></p>
+</li>
+<li><p>與  <code>@mixin</code>  的不同之處，在於  <code>@function</code>  只會回傳一個值，而  <code>@mixin</code>  是回傳一段 CSS 程式碼</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fde84174-b046-4b0d-9613-c242eb1b0b07/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103326Z&X-Amz-Expires=86400&X-Amz-Signature=9cd9bb3c866d49d6ebb5aeb591ea1ee130ba18e94e7bea76fa5c7066530717fa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+</li>
+</ul>
+<h1 id="自動化-CSS"><a href="#自動化-CSS" class="headerlink" title="自動化 CSS"></a>自動化 CSS</h1><h2 id="Loop"><a href="#Loop" class="headerlink" title="Loop"></a>Loop</h2><h3 id="使用-each-搭配-array"><a href="#使用-each-搭配-array" class="headerlink" title="使用  @each  搭配 array"></a>使用  <code>@each</code>  搭配 array</h3><ul>
+<li>以逗號表示  <code>center, start, end</code></li>
+<li>#{ } 引用列表的值</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$direction-types</span>: center, start, end</span><br><span class="line"></span><br><span class="line">@each <span class="variable">$type</span> in <span class="variable">$direction-types</span></span><br><span class="line">  .flex-#&#123;<span class="variable">$type</span>&#125;</span><br><span class="line">    <span class="attribute">display</span>: flex</span><br><span class="line">    justify-content: <span class="variable">$type</span></span><br><span class="line">    align-items: center</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9e4ca414-b0c2-4200-8caf-d4e87d6d3a16/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103508Z&X-Amz-Expires=86400&X-Amz-Signature=31cff795f5aa24718a5f96841cd79097dedab13e765da7ca9f7faee56a8e75a1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h3 id="使用-each-搭配-map"><a href="#使用-each-搭配-map" class="headerlink" title="使用  @each  搭配 map"></a>使用  <code>@each</code>  搭配 map</h3><ul>
+<li>在括號以  <code>參數:值</code>  表示  <code>(center: center, start: flex-start, end: flex-end)</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$types</span>: (</span><br><span class="line"><span class="comment">//$type : $value</span></span><br><span class="line">  center: center,</span><br><span class="line">  start: flex-start,</span><br><span class="line">  end: flex-end,</span><br><span class="line">);</span><br><span class="line">@each <span class="variable">$type</span>, <span class="variable">$value</span> in <span class="variable">$types</span> &#123;</span><br><span class="line">  .P-<span class="comment">#&#123;$type&#125; &#123;</span></span><br><span class="line">    display: inline;</span><br><span class="line">    justify-<span class="built_in">self</span>: <span class="variable">$value</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c039bffa-13ea-42a8-b269-36d68d65fcb0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103523Z&X-Amz-Expires=86400&X-Amz-Signature=7c1615512b706f3dc0d1f4f9969e1309bfbdddc5957d2a63eb5da0faef2fd84b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h3 id="for-迴圈"><a href="#for-迴圈" class="headerlink" title="for 迴圈"></a>for 迴圈</h3><ul>
+<li>使用時機：用於預先設定，或特效網站需產生密集大小值</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">0</span> through <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//加一是因為要設定h6</span></span><br><span class="line">    .h<span class="comment">#&#123;5 - $i + 1&#125;</span></span><br><span class="line">        font-size: <span class="number">1</span> + <span class="number">0.2</span>rem * <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">1</span> through <span class="number">6</span> &#123;</span><br><span class="line">  h<span class="comment">#&#123;$i&#125; &#123;</span></span><br><span class="line">    font-size: <span class="number">5</span>rem - <span class="variable">$i</span> * <span class="number">0.5</span>rem;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/793455c6-2130-4c94-8e99-a494836d1535/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103542Z&X-Amz-Expires=86400&X-Amz-Signature=478ccbc634b15407b080e44e6b2a7c69485d6ab76bc8286278e0b9ca3da4f819&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>可參考<a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/control/for">官方文件</a>。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/Sass-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -983,297 +1350,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(%E7%B8%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%95%AA%E8%8C%84%E9%90%98(%E7%B8%BD/" class="post-title-link" itemprop="url">做出一個網頁版的番茄鐘</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-05-25 14:48:24" itemprop="dateCreated datePublished" datetime="2022-05-25T14:48:24+08:00">2022-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-05-26 12:45:53" itemprop="dateModified" datetime="2022-05-26T12:45:53+08:00">2022-05-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="總體的步驟"><a href="#總體的步驟" class="headerlink" title="總體的步驟"></a>總體的步驟</h1><ul>
-<li>先寫出想做什麼<ul>
-<li>想有什麼功能<ul>
-<li>最好詳細形容一下 比較好做</li>
-</ul>
-</li>
-<li>畫面大概長怎樣<ul>
-<li>可以找出頁面的範本</li>
-<li>或是畫示意圖</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>HTML CSS 先做出畫面</li>
-<li>JS 寫功能<ul>
-<li>可以將功能 分成1.0 以及 2.0版本</li>
-<li>先做出1.0 最簡單的頁面</li>
-<li>再慢慢進階到2.0</li>
-</ul>
-</li>
-<li>JS 遇到不會寫的功能 先記下來<ul>
-<li>查不會的部分<br>1. 將查到資料的寫在筆記<br>2. 寫一個簡單的頁面作為實驗<br>3. 將成果記錄到notion<br>4. 整合到項目裡面</li>
-</ul>
-</li>
-<li>其他Tips<ul>
-<li>想到新的點子就先寫下來 之後再安排時間實踐</li>
-<li>每天反思今天的工作流程</li>
-<li>每天總結今天自己做出的事情</li>
-<li>每天將作品push 到Git hub上面 當作紀錄</li>
-<li>注意休息 一定要有時間放空 可以讓腦袋自己去整理思緒</li>
-</ul>
-</li>
-</ul>
-<h1 id="想寫出的功能"><a href="#想寫出的功能" class="headerlink" title="想寫出的功能"></a>想寫出的功能</h1><ul>
-<li><p>計時功能</p>
-<ul>
-<li>點擊開始計時 就要開始這個鬧鐘</li>
-<li>鬧鐘結束之後要自動進入下一個鬧鐘</li>
-<li>結束工作鬧鐘之後 要累計時間<ul>
-<li>設定local storage存到裡面</li>
-</ul>
-</li>
-<li>暫停的按鈕 跟功能</li>
-<li>可設定循環次數  自動撥放循環幾次</li>
-</ul>
-</li>
-<li><p>輸入</p>
-<ul>
-<li>抓到輸入的數字 變成計時時間<ul>
-<li>設定的數字不能小於0</li>
-</ul>
-</li>
-<li>設定結束提醒 將文字轉成語音 播放出來</li>
-</ul>
-</li>
-<li><p>版面</p>
-<ul>
-<li>顯示倒數計時</li>
-<li>設定默認工作時間</li>
-<li>可以設定靜音模式</li>
-<li>設定開始聲音</li>
-<li>設定計時聲音</li>
-<li>工作時間紅色 &#x2F; 休息時間綠色</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/VwQrLEV?editors=1111">累積工作時間</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E5%AD%B8%E7%BF%92mark%20down%E7%9A%84%E5%AF%AB%E6%B3%95-%E5%9F%BA%E7%A4%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%AD%B8%E7%BF%92mark%20down%E7%9A%84%E5%AF%AB%E6%B3%95-%E5%9F%BA%E7%A4%8E/" class="post-title-link" itemprop="url">學習mark down的寫法-基礎</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-05-24 13:33:56" itemprop="dateCreated datePublished" datetime="2022-05-24T13:33:56+08:00">2022-05-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-06-02 23:31:31" itemprop="dateModified" datetime="2022-06-02T23:31:31+08:00">2022-06-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h3><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>這是一個學習紀錄，記下我學到的新的功能，所以只會引用文章中程式碼的部分，詳情請看參考文章原文。</p>
-<h1 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<p><a target="_blank" rel="noopener" href="https://markdown.tw/#hr">Markdown文件</a></p>
-<h1 id="標題"><a href="#標題" class="headerlink" title="標題"></a>標題</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 標題 1</span><br><span class="line">## 標題 2</span><br><span class="line">...</span><br><span class="line">###### 標題 6</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 使用引用</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>使用引用</p>
-</blockquote>
-<h1 id="清單-bullet-x2F-number-l"><a href="#清單-bullet-x2F-number-l" class="headerlink" title="清單 bullet &#x2F; number l"></a>清單 bullet &#x2F; number l</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 這是清單</span><br><span class="line">+ 這也是清單</span><br><span class="line">* 這同樣是清單</span><br><span class="line">        - 清單子項目(一個縮排或是兩個空白 )</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 數字型清單</span><br><span class="line">2. 第二個數字清單</span><br><span class="line">2. 數字清單不需要連續數字</span><br><span class="line">  3. 數字清單子項目(一個縮排或是兩個空白 )</span><br></pre></td></tr></table></figure>
-<h1 id="分隔線"><a href="#分隔線" class="headerlink" title="分隔線"></a>分隔線</h1><p><a target="_blank" rel="noopener" href="https://markdown.tw/#hr">Markdown文件</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* * *</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<h1 id="斜體"><a href="#斜體" class="headerlink" title="斜體"></a>斜體</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*使用斜體*。</span><br><span class="line">_使用斜體_</span><br></pre></td></tr></table></figure>
-
-<p><em>使用斜體</em>   *之外非斜體<br><br><em>使用斜體</em> _之外非斜體<br></p>
-<h1 id="強調"><a href="#強調" class="headerlink" title="強調"></a>強調</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**使用強調**</span><br><span class="line">__使用強調__</span><br></pre></td></tr></table></figure>
-<p><strong>使用強調</strong> <br><br><strong>使用強調</strong></p>
-<h1 id="行內程式碼"><a href="#行內程式碼" class="headerlink" title="行內程式碼"></a>行內程式碼</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<p>將Html的標籤顯示在面上</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;em&gt;123&lt;/em&gt;` (前後加上反引號</span><br></pre></td></tr></table></figure>
-<p><code>&lt;em&gt;123&lt;/em&gt;</code></p>
-<h1 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Google](https://www.google.com.tw/)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.google.com.tw/">Google</a></p>
-<h1 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![unsplash 圖片](https://images.unsplash.com/photo-1573900941478-7cc800f708f3?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80)</span><br><span class="line"></span><br><span class="line">![ &#125;內容為SEO增強 非必填</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="題外話-怎樣取得圖片連結"><a href="#題外話-怎樣取得圖片連結" class="headerlink" title="(題外話 怎樣取得圖片連結"></a>(題外話 怎樣取得圖片連結</h1><h2 id="在網站上的圖片"><a href="#在網站上的圖片" class="headerlink" title="在網站上的圖片"></a>在網站上的圖片</h2><ol>
-<li>右鍵 </li>
-<li>複製圖片網址<br>   <img src="https://upload.cc/i1/2022/05/27/AawE0r.png"></li>
-</ol>
-<h2 id="電腦上的圖片"><a href="#電腦上的圖片" class="headerlink" title="電腦上的圖片"></a>電腦上的圖片</h2><ol>
-<li>上傳到會生成url的網站 <ul>
-<li>推薦<a target="_blank" rel="noopener" href="https://upload.cc/">Upload.cc</a></li>
-</ul>
-</li>
-<li>複製網址 貼在專案當中</li>
-</ol>
-<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<p>區塊程式碼<br>三個連續的反引號（&#96;）用在開頭結尾</p>
-<figure class="highlight plaintext"><figcaption><span>(let i </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    console.log(&#x27;這執行第&#x27; + i + &#x27;次&#x27;);</span><br><span class="line">  &#125;, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2019/11/23/ten-mins-learn-markdown/">十分鐘快速掌握 Markdown
-</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| thead 1 | thrad 2 | thread 3 |</span><br><span class="line">|---------|---------|----------|</span><br><span class="line">| td      | td      | td       |</span><br></pre></td></tr></table></figure>
-
-<h1 id="縮排"><a href="#縮排" class="headerlink" title="縮排"></a>縮排</h1><p><a target="_blank" rel="noopener" href="https://www.796t.com/article.php?id=252945">markdown段落中如何產生縮排
-</a></p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>含意</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&amp;nbsp;</code></td>
-<td>半形的不斷行的空白格（推薦使用）</td>
-</tr>
-<tr>
-<td><code>&amp;ensp;</code></td>
-<td>半形的空格</td>
-</tr>
-<tr>
-<td><code>&amp;emsp;</code></td>
-<td>全形的空格</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1339,12 +1419,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">標籤</span>
       </div>
   </nav>

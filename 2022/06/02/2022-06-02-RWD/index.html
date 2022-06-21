@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章前端工程師基礎 RWD 教學(一)RWD 基礎概念 @ 重金屬 AI 工程師的 Coding 分享 :: 痞客邦 :: 前端工程師的基礎 RWD 教學(一)RWD 基礎概念 什麼是 RWD 網頁的各種元素，以可以縮放、浮動的區塊來做配置，讓網頁中的各種元素，能隨著不同的瀏覽介面，而自動縮放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步">
+<meta property="og:url" content="http://example.com/2022/06/02/2022-06-02-RWD/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章前端工程師基礎 RWD 教學(一)RWD 基礎概念 @ 重金屬 AI 工程師的 Coding 分享 :: 痞客邦 :: 前端工程師的基礎 RWD 教學(一)RWD 基礎概念 什麼是 RWD 網頁的各種元素，以可以縮放、浮動的區塊來做配置，讓網頁中的各種元素，能隨著不同的瀏覽介面，而自動縮放">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-02T15:22:40.000Z">
+<meta property="article:modified_time" content="2022-06-08T10:56:10.444Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-06-02-RWD" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/02/2022-06-02-RWD/" class="article-date">
+  <time class="dt-published" datetime="2022-06-02T15:22:40.000Z" itemprop="datePublished">2022-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://izzysixxofai.pixnet.net/blog/post/288639248-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8Erwd%E6%95%99%E5%AD%B8%28%E4%B8%80%29rwd%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5">前端工程師基礎 RWD 教學(一)RWD 基礎概念 @ 重金屬 AI 工程師的 Coding 分享 :: 痞客邦 ::</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Basic-Concept.html">前端工程師的基礎 RWD 教學(一)RWD 基礎概念</a></p>
+<h1 id="什麼是-RWD"><a href="#什麼是-RWD" class="headerlink" title="什麼是 RWD"></a>什麼是 RWD</h1><ul>
+<li>網頁的各種元素，以可以縮放、浮動的區塊來做配置，讓網頁中的各種元素，能隨著不同的瀏覽介面，而自動縮放大小以及調整排版。</li>
+<li>響應式網站 (RWD) 是基於核心三個概念的技術的組合:<ul>
+<li>流動布局（Fluid Grid）</li>
+<li>流動圖片 (Fluid Images)</li>
+<li>及媒體查詢（Media Queries）</li>
+</ul>
+</li>
+</ul>
+<h1 id="建構-RWD-網站的第一步"><a href="#建構-RWD-網站的第一步" class="headerlink" title="建構 RWD 網站的第一步"></a>建構 RWD 網站的第一步</h1><ul>
+<li>在 HTML 開始的地方加入「Viewport」語法。語法如下：<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=0.5, user-scalable=no&quot;&gt;</code></li>
+<li>width&#x3D;device-width</li>
+<li>initial-scale&#x3D;1.0 「初始的比例」</li>
+<li>maximum-scale&#x3D;1.5 最大的縮放尺寸</li>
+<li>minimum-scale&#x3D;0.5 最小的縮放尺寸」</li>
+<li>user-scalable&#x3D;no 是否允許使用者自行縮放</li>
+</ul>
+<h1 id="核心三個概念-流動布局（Fluid-Grid）"><a href="#核心三個概念-流動布局（Fluid-Grid）" class="headerlink" title="核心三個概念 : 流動布局（Fluid Grid）"></a>核心三個概念 : 流動布局（Fluid Grid）</h1><ul>
+<li>在流動布局中，寬度也常以百分比 (%) 為單位</li>
+</ul>
+<h2 id="流動圖片-Fluid-Images"><a href="#流動圖片-Fluid-Images" class="headerlink" title="流動圖片 (Fluid Images)"></a>流動圖片 (Fluid Images)</h2><ul>
+<li>流以百分比 (%) 為單位。</li>
+<li>在 RWD 網頁中圖片的顯示方式有兩種，<ul>
+<li>一種是傳統的「<code>&lt;img&gt;</code>」標籤，</li>
+<li>另一種就是直接使用 CSS 的背景圖。</li>
+</ul>
+</li>
+<li>使用「<code>&lt;img&gt;</code>」標籤時<ul>
+<li>只需將其 width 或是 height 其中一個尺寸設定為百分比 ( % )，</li>
+<li>另一個則設為 auto 則可以達到 RWD 的效果，</li>
+<li>範例如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">80%</span>; <span class="comment">/*最大寬度設為 80% 而不是 100%，是為了避免圖片糊掉*/</span></span><br><span class="line">  <span class="attribute">height</span>: auto; <span class="comment">/*高度設為 auto 好讓圖片可以等比例縮放*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>CSS3 的新屬性「background-size」<ul>
+<li>可以指定背景圖片的大小是否可填滿整個容器<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#banner</span> &#123;</span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="核心三個概念-Liquid-Layout-液態排版"><a href="#核心三個概念-Liquid-Layout-液態排版" class="headerlink" title="核心三個概念 : Liquid Layout (液態排版)"></a>核心三個概念 : Liquid Layout (液態排版)</h1><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/RWD-Fluid-Grid.html">前端工程師的基礎 RWD 教學(二)流動布局 Fluid Grid</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>｛ <span class="attribute">width</span>: <span class="number">36%</span> ｝</span><br></pre></td></tr></table></figure>
+
+<h1 id="核心三個概念-媒體查詢（Media-Queries）"><a href="#核心三個概念-媒體查詢（Media-Queries）" class="headerlink" title="核心三個概念 : 媒體查詢（Media Queries）"></a>核心三個概念 : 媒體查詢（Media Queries）</h1><ul>
+<li>就是網頁會先「查詢（query)」「媒體 ( media )」的屬性，再針對這些屬性值而決定要給網頁什麼樣的樣式</li>
+</ul>
+<h2 id="Media-Query-使用方法"><a href="#Media-Query-使用方法" class="headerlink" title="Media Query 使用方法"></a>Media Query 使用方法</h2><h3 id="HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小："><a href="#HTML-中使用，以下範例為用-media-屬性判斷使用者的裝置大小：" class="headerlink" title="HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小："></a>HTML 中使用，以下範例為用 media 屬性判斷使用者的裝置大小：</h3><ul>
+<li><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen and (max-device-width: 400px)&quot; href=&quot;Screen.css&quot;&gt;</code></li>
+</ul>
+<h3 id="CSS-中使用"><a href="#CSS-中使用" class="headerlink" title="CSS 中使用"></a>CSS 中使用</h3><ul>
+<li>＠media screen and (max-device-width: 400px){…}</li>
+<li>補充<br><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-3.html">前端工程師的基礎 RWD 教學(五)Media Query 基礎之 and&#x2F;not&#x2F;only 判斷條件</a></li>
+</ul>
+<h3 id="也可使用-import"><a href="#也可使用-import" class="headerlink" title="也可使用 @import"></a>也可使用 @import</h3><ul>
+<li>@import “screen.css” screen and (max-device-width: 400px)</li>
+</ul>
+<h2 id="常用媒體類型-media-type-的為"><a href="#常用媒體類型-media-type-的為" class="headerlink" title="常用媒體類型 (media-type) 的為"></a>常用媒體類型 (media-type) 的為</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-2.html"></a></p>
+<ul>
+<li>all (所有裝置)、</li>
+<li>screen (螢幕裝置)、</li>
+<li>print (印刷裝置)</li>
+</ul>
+<h2 id="常見媒體特徵-Media-Features-有"><a href="#常見媒體特徵-Media-Features-有" class="headerlink" title="常見媒體特徵 (Media Features) 有"></a>常見媒體特徵 (Media Features) 有</h2><p><a target="_blank" rel="noopener" href="https://www.tedu.tw/blog/Media-Query-Basics-4.html">前端工程師的基礎 RWD 教學(六)Media Query 基礎之 Media Features-上</a></p>
+<ul>
+<li>min-width (最小寬度)、</li>
+<li>max-width (最大寬度) 、</li>
+<li>resolution (解析度)、</li>
+<li>color (顏色) 等。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/02/2022-06-02-RWD/" data-id="cl4nw5shk000glcvr7s5j29hu" data-title="RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/02/2022-06-02-postCSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          什麼是 PostCSS？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/02/2022-06-02-Sass-basic2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">學習Sass基礎2 -- 語法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

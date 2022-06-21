@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>6/8 SCSS +RWD 基礎頁面 1.0版 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下 引用文章學習 Sass 基礎 1 –Sass 是什麼 如何引入 學習 Sass 基礎 2 – 語法 RWD 01 基礎 什麼是 PostCSS？ 成品6&#x2F;8 scss +RWD 基礎頁面 1.0 版 初期步驟：學習工具 &#x2F;規劃頁面基礎是啥? 掌握工具的基礎 找相關文章 基礎的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6&#x2F;8 SCSS +RWD 基礎頁面 1.0版">
+<meta property="og:url" content="http://example.com/2022/06/08/2022-06-08-Sass-RWD%201.0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下 引用文章學習 Sass 基礎 1 –Sass 是什麼 如何引入 學習 Sass 基礎 2 – 語法 RWD 01 基礎 什麼是 PostCSS？ 成品6&#x2F;8 scss +RWD 基礎頁面 1.0 版 初期步驟：學習工具 &#x2F;規劃頁面基礎是啥? 掌握工具的基礎 找相關文章 基礎的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/889d2fb1-1f44-4576-9e2e-fb267ed5b076/1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220609/us-west-2/s3/aws4_request&X-Amz-Date=20220609T051729Z&X-Amz-Expires=86400&X-Amz-Signature=7f3539abdf642c4607cece29fa318a6dceaafcfbba438b2569d7f39fda5dc9b2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%221.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd7860cd-fe84-4eb6-a4b5-719ca0bd8551/1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220609/us-west-2/s3/aws4_request&X-Amz-Date=20220609T051741Z&X-Amz-Expires=86400&X-Amz-Signature=11002f797afc45c7cadf79a70a0c366d40bb7cc7bbf716e77073eba6105bd560&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%221.png%22&x-id=GetObject">
+<meta property="article:published_time" content="2022-06-08T11:26:19.000Z">
+<meta property="article:modified_time" content="2022-06-09T05:26:48.080Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/889d2fb1-1f44-4576-9e2e-fb267ed5b076/1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220609/us-west-2/s3/aws4_request&X-Amz-Date=20220609T051729Z&X-Amz-Expires=86400&X-Amz-Signature=7f3539abdf642c4607cece29fa318a6dceaafcfbba438b2569d7f39fda5dc9b2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%221.png%22&x-id=GetObject">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-06-08-Sass-RWD 1.0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/08/2022-06-08-Sass-RWD%201.0/" class="article-date">
+  <time class="dt-published" datetime="2022-06-08T11:26:19.000Z" itemprop="datePublished">2022-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      6/8 SCSS +RWD 基礎頁面 1.0版
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><p>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</p>
+<h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://newstarellie.github.io/Sass-basic/">學習 Sass 基礎 1 –Sass 是什麼 如何引入</a></p>
+<p><a target="_blank" rel="noopener" href="https://newstarellie.github.io/Sass-basic2/">學習 Sass 基礎 2 – 語法</a></p>
+<p><a target="_blank" rel="noopener" href="https://newstarellie.github.io/RWD/">RWD 01 基礎</a></p>
+<p><a target="_blank" rel="noopener" href="https://newstarellie.github.io/postCSS/">什麼是 PostCSS？</a></p>
+<h1 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/BaYOeMK?editors=1100">6&#x2F;8 scss +RWD 基礎頁面 1.0 版</a></p>
+<h1 id="初期步驟：學習工具-x2F-規劃頁面"><a href="#初期步驟：學習工具-x2F-規劃頁面" class="headerlink" title="初期步驟：學習工具 &#x2F;規劃頁面"></a>初期步驟：學習工具 &#x2F;規劃頁面</h1><h2 id="基礎是啥-掌握工具的基礎"><a href="#基礎是啥-掌握工具的基礎" class="headerlink" title="基礎是啥? 掌握工具的基礎"></a>基礎是啥? 掌握工具的基礎</h2><ul>
+<li>找相關文章<ul>
+<li>基礎的文章優先</li>
+</ul>
+</li>
+<li>寫筆記<ul>
+<li>記錄下來 作為實作的參考</li>
+<li>也可以作為複習</li>
+</ul>
+</li>
+</ul>
+<h2 id="先安裝-嘗試使用-安裝插件"><a href="#先安裝-嘗試使用-安裝插件" class="headerlink" title="先安裝 嘗試使用 安裝插件"></a>先安裝 嘗試使用 安裝插件</h2><ul>
+<li>用用看 basic</li>
+</ul>
+<h2 id="找出想模仿的頁面"><a href="#找出想模仿的頁面" class="headerlink" title="找出想模仿的頁面"></a>找出想模仿的頁面</h2><h1 id="基礎實作步驟-為了熟悉工具的使用"><a href="#基礎實作步驟-為了熟悉工具的使用" class="headerlink" title="基礎實作步驟 : 為了熟悉工具的使用"></a>基礎實作步驟 : 為了熟悉工具的使用</h1><h2 id="做出-html-切版"><a href="#做出-html-切版" class="headerlink" title="做出 html 切版"></a>做出 html 切版</h2><h2 id="寫出原版的-css"><a href="#寫出原版的-css" class="headerlink" title="寫出原版的 css"></a>寫出原版的 css</h2><h2 id="修改-css-變成模組化的檔案"><a href="#修改-css-變成模組化的檔案" class="headerlink" title="修改 css 變成模組化的檔案"></a>修改 css 變成模組化的檔案</h2><ul>
+<li>改用 scss 寫法<ul>
+<li>參考<a target="_blank" rel="noopener" href="https://newstarellie.github.io/Sass-basic2/">學習 Sass 基礎 2 – 語法</a></li>
+</ul>
+</li>
+<li>切分成幾個小的檔案<ul>
+<li>參考 <a target="_blank" rel="noopener" href="https://newstarellie.github.io/sass3/">學習 Sass 基礎 3 – 拆分檔案的步驟</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="RWD-規劃"><a href="#RWD-規劃" class="headerlink" title="RWD 規劃"></a>RWD 規劃</h2><ul>
+<li>規劃 madia 斷點</li>
+<li>從哪裡開始寫 ?<ul>
+<li>手機 使用 min-width</li>
+</ul>
+</li>
+</ul>
+<h1 id="實作筆記"><a href="#實作筆記" class="headerlink" title="實作筆記"></a>實作筆記</h1><h2 id="兩種設定-flex-的方法"><a href="#兩種設定-flex-的方法" class="headerlink" title="兩種設定 flex 的方法"></a>兩種設定 flex 的方法</h2><h3 id="建立-each-迴圈生成的-class"><a href="#建立-each-迴圈生成的-class" class="headerlink" title="建立 @each 迴圈生成的 class"></a>建立 @each 迴圈生成的 class</h3><ul>
+<li>用在 HTML 添加 class</li>
+<li>注意:<ul>
+<li>不能生成@extend</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$direction-types</span>: center, start, end, space-between, space-around, space-evenly;</span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$type</span> in <span class="variable">$direction-types</span> &#123;</span><br><span class="line">  <span class="selector-class">.flex-row-</span>#&#123;<span class="variable">$type</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: <span class="variable">$type</span>;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.flex-column-</span>#&#123;<span class="variable">$type</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">justify-content</span>: <span class="variable">$type</span>;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;flex-row-start&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="建立-mixin"><a href="#建立-mixin" class="headerlink" title="建立 mixin"></a>建立 mixin</h3><ul>
+<li>用在 css 添加@include</li>
+<li>在 media 的時候使用</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flex-row(<span class="variable">$justify-content</span>, <span class="variable">$align-items</span>) &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: <span class="variable">$justify-content</span>;</span><br><span class="line">  <span class="attribute">align-items</span>: <span class="variable">$align-items</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@mixin</span> flex-column(<span class="variable">$justify-content</span>, <span class="variable">$align-items</span>) &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">justify-content</span>: <span class="variable">$justify-content</span>;</span><br><span class="line">  <span class="attribute">align-items</span>: <span class="variable">$align-items</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@include</span> pad &#123;</span><br><span class="line">  <span class="keyword">@include</span> flex-row(space-between, start);</span><br><span class="line">  <span class="selector-tag">article</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">75%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎樣使用變數"><a href="#怎樣使用變數" class="headerlink" title="怎樣使用變數?"></a>怎樣使用變數?</h2><h3 id="什麼可以寫成變數"><a href="#什麼可以寫成變數" class="headerlink" title="什麼可以寫成變數 ?"></a>什麼可以寫成變數 ?</h3><ul>
+<li><p>原則就是會很多次重複使用的設定 就可以寫成 variable</p>
+</li>
+<li><p>範例: $logo-img</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意寫法 需要&quot; 不需要&quot;url()&quot;</span></span><br><span class="line"><span class="variable">$logo-img</span>: <span class="string">&quot;https://cdn-icons-png.flaticon.com/512/7041/7041416.png&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@mixin</span> logo-img(<span class="variable">$logo-img</span>, <span class="variable">$width</span>, <span class="variable">$hight</span>) &#123;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: url(<span class="variable">$logo-img</span>);</span><br><span class="line">    <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$hight</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@include</span> logo-img(<span class="variable">$logo-img</span>, <span class="number">50px</span>, <span class="number">50px</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="命名方法"><a href="#命名方法" class="headerlink" title="命名方法 ?"></a>命名方法 ?</h2><ul>
+<li>讓人可以清楚明白用途的</li>
+</ul>
+<h2 id="我自己寫過覺得好用的變數-之後會慢慢增加"><a href="#我自己寫過覺得好用的變數-之後會慢慢增加" class="headerlink" title="我自己寫過覺得好用的變數 (之後會慢慢增加"></a>我自己寫過覺得好用的變數 (之後會慢慢增加</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//font</span></span><br><span class="line"><span class="variable">$font-sm</span>: <span class="number">1rem</span>;</span><br><span class="line"><span class="variable">$font-md</span>: <span class="number">1.5rem</span>;</span><br><span class="line"><span class="variable">$font-lg</span>: <span class="number">2rem</span>;</span><br><span class="line"><span class="variable">$line-height</span>: <span class="number">1.5rem</span>;</span><br><span class="line"><span class="comment">//color</span></span><br><span class="line"><span class="variable">$theme-color-main</span>: <span class="number">#b2998e</span>;</span><br><span class="line"><span class="variable">$theme-color-second</span>: <span class="number">#dcc6c6</span>;</span><br><span class="line"><span class="variable">$theme-color-background</span>: <span class="number">#e1e0e7</span>;</span><br><span class="line"><span class="variable">$text-color</span>: <span class="number">#854e4b</span>;</span><br><span class="line"><span class="variable">$border-color</span>: <span class="number">#854e4b</span>;</span><br><span class="line"><span class="variable">$table-color</span>: <span class="number">#f6ded4</span>;</span><br><span class="line"><span class="comment">//btn</span></span><br><span class="line"><span class="variable">$btn-text-color</span>: <span class="number">#e1e0e7</span>;</span><br><span class="line"><span class="variable">$btn-background-color</span>: <span class="variable">$theme-color-background</span>;</span><br><span class="line"><span class="variable">$btn-hover-color</span>: <span class="variable">$theme-color-second</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//margin</span></span><br><span class="line"><span class="variable">$margin-s</span>: <span class="number">0.5rem</span>;</span><br><span class="line"><span class="variable">$margin-m</span>: <span class="number">1rem</span>;</span><br><span class="line"><span class="variable">$margin-l</span>: <span class="number">1.5rem</span>;</span><br><span class="line"><span class="variable">$margin-xl</span>: <span class="number">2rem</span>;</span><br><span class="line"><span class="comment">//pic</span></span><br><span class="line"><span class="variable">$logo-img</span>: <span class="string">&quot;https://cdn-icons-png.flaticon.com/512/7041/7041416.png&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="什麼可以寫成-MIXIN？"><a href="#什麼可以寫成-MIXIN？" class="headerlink" title="什麼可以寫成 MIXIN？"></a>什麼可以寫成 MIXIN？</h2><ul>
+<li>比較複雜 但是常用的設定<ul>
+<li>要一次設定很多東西 怕會有遺漏就可以使用 mixin</li>
+</ul>
+</li>
+</ul>
+<h3 id="寫成-MIXIN-的好處"><a href="#寫成-MIXIN-的好處" class="headerlink" title="寫成 MIXIN 的好處"></a>寫成 MIXIN 的好處</h3><ul>
+<li>寫一次之後之後可以重複使用這些設定</li>
+<li>可以慢慢改善單一元件的功能 越寫越完整</li>
+<li>也可以參考別人的寫法 改善自己的專案</li>
+</ul>
+<h3 id="例如-logo"><a href="#例如-logo" class="headerlink" title="例如 : logo"></a>例如 : logo</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//logo</span></span><br><span class="line"><span class="keyword">@mixin</span> logo-img(<span class="variable">$logo-img</span>, <span class="variable">$width</span>, <span class="variable">$hight</span>) &#123;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="selector-tag">a</span> &#123;</span><br><span class="line">      <span class="attribute">background-image</span>: url(<span class="variable">$logo-img</span>);</span><br><span class="line">      <span class="attribute">display</span>: block;</span><br><span class="line">      <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="variable">$hight</span>;</span><br><span class="line">      <span class="attribute">text-indent</span>: -<span class="number">1000px</span>;</span><br><span class="line">      <span class="attribute">background-size</span>: contain;</span><br><span class="line">      <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">      <span class="attribute">text-indent</span>: <span class="number">101%</span>;</span><br><span class="line">      <span class="attribute">overflow</span>: hidden;</span><br><span class="line">      <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例如-按鈕"><a href="#例如-按鈕" class="headerlink" title="例如: 按鈕"></a>例如: 按鈕</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> btn &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$btn-background-color</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="variable">$btn-background-color</span> solid <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$text-color</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line"></span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="variable">$btn-hover-color</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-prettier-設定-讓-scss-自動排版"><a href="#修改-prettier-設定-讓-scss-自動排版" class="headerlink" title="修改 prettier 設定 讓 scss 自動排版"></a>修改 prettier 設定 讓 scss 自動排版</h2><h3 id="選擇設定"><a href="#選擇設定" class="headerlink" title="選擇設定"></a>選擇設定</h3><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/889d2fb1-1f44-4576-9e2e-fb267ed5b076/1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220609/us-west-2/s3/aws4_request&X-Amz-Date=20220609T051729Z&X-Amz-Expires=86400&X-Amz-Signature=7f3539abdf642c4607cece29fa318a6dceaafcfbba438b2569d7f39fda5dc9b2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%221.png%22&x-id=GetObject" alt="1.png"></p>
+<h3 id="修改預設的-formatter"><a href="#修改預設的-formatter" class="headerlink" title="修改預設的 formatter"></a>修改預設的 formatter</h3><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd7860cd-fe84-4eb6-a4b5-719ca0bd8551/1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220609/us-west-2/s3/aws4_request&X-Amz-Date=20220609T051741Z&X-Amz-Expires=86400&X-Amz-Signature=11002f797afc45c7cadf79a70a0c366d40bb7cc7bbf716e77073eba6105bd560&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%221.png%22&x-id=GetObject" alt="1.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/08/2022-06-08-Sass-RWD%201.0/" data-id="cl4nw5shn000mlcvr2llk73a3" data-title="6/8 SCSS +RWD 基礎頁面 1.0版" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/10/2022-06-10-Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          6/10 SCSS+RWD 六角作業 2.0版 寫出layout
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/08/2022-06-08-sass3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">學習Sass基礎3 -- 拆分檔案的步驟</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

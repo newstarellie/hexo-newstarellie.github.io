@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>怎樣使用.gitignore | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下.gitignore-有些檔案我不想放在 Git 裡面…【狀況題】有些檔案我不想放在 Git 裡面…  .gitignore 是在專案裡面需要忽略的檔案 建立一個.gitignore檔案專案目錄裡放一個 .gitignore 檔案，  $ touch .gitignore  怎樣編寫.gitignoreg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎樣使用.gitignore">
+<meta property="og:url" content="http://example.com/2022/05/25/2022-05-25-%E4%BD%BF%E7%94%A8GIT/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下.gitignore-有些檔案我不想放在 Git 裡面…【狀況題】有些檔案我不想放在 Git 裡面…  .gitignore 是在專案裡面需要忽略的檔案 建立一個.gitignore檔案專案目錄裡放一個 .gitignore 檔案，  $ touch .gitignore  怎樣編寫.gitignoreg">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-25T12:46:59.000Z">
+<meta property="article:modified_time" content="2022-06-02T15:31:39.362Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-05-25-使用GIT" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/25/2022-05-25-%E4%BD%BF%E7%94%A8GIT/" class="article-date">
+  <time class="dt-published" datetime="2022-05-25T12:46:59.000Z" itemprop="datePublished">2022-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      怎樣使用.gitignore
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h3><h1 id="gitignore-有些檔案我不想放在-Git-裡面…"><a href="#gitignore-有些檔案我不想放在-Git-裡面…" class="headerlink" title=".gitignore-有些檔案我不想放在 Git 裡面…"></a>.gitignore-有些檔案我不想放在 Git 裡面…</h1><p><a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/using-git/ignore">【狀況題】有些檔案我不想放在 Git 裡面…
+</a></p>
+<p>.gitignore 是在專案裡面需要忽略的檔案</p>
+<h1 id="建立一個-gitignore檔案"><a href="#建立一個-gitignore檔案" class="headerlink" title="建立一個.gitignore檔案"></a>建立一個.gitignore檔案</h1><p>專案目錄裡放一個 .gitignore 檔案，</p>
+<blockquote>
+<p>$ touch .gitignore</p>
+</blockquote>
+<h1 id="怎樣編寫-gitignore"><a href="#怎樣編寫-gitignore" class="headerlink" title="怎樣編寫.gitignore"></a>怎樣編寫.gitignore</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangmo/p/7737109.html">git设置忽略文件和目录</a></p>
+<p>打開.gitignore 文件</p>
+<table>
+<thead>
+<tr>
+<th>含意</th>
+<th>編寫方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td># 忽略*.o和*.a文件</td>
+<td>*.[oa]</td>
+</tr>
+<tr>
+<td># 忽略*.b和*.B文件，my.b除外</td>
+<td>*.[bB] <br>!my.b</td>
+</tr>
+<tr>
+<td># 忽略dbg文件和dbg目录</td>
+<td>dbg</td>
+</tr>
+<tr>
+<td># 只忽略dbg目录，不忽略dbg文件</td>
+<td>dbg&#x2F;</td>
+</tr>
+<tr>
+<td># 只忽略dbg文件，不忽略dbg目录</td>
+<td>dbg <br>!dbg&#x2F;</td>
+</tr>
+</tbody></table>
+<h1 id="狀況-有的時候推不上去怎麼辦"><a href="#狀況-有的時候推不上去怎麼辦" class="headerlink" title="[狀況]有的時候推不上去怎麼辦?"></a>[狀況]有的時候推不上去怎麼辦?</h1><p><a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/github/fail-to-push">【狀況題】怎麼有時候推不上去…
+</a></p>
+<p>Push 指令的時候會出現這個錯誤訊息：<code>failed to push some refs to &#39;https://github.com/eddiekao/dummy-git.git&#39;</code></p>
+<p>第一招：先拉再推</p>
+<blockquote>
+<p>git pull –rebase</p>
+</blockquote>
+<p>第二招：無視 總之就是聽我的！</p>
+<blockquote>
+<p>git push -f</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/25/2022-05-25-%E4%BD%BF%E7%94%A8GIT/" data-id="cl4nw5shd0004lcvr7h8dfwfs" data-title="怎樣使用.gitignore" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/26/2022-05-26-%E7%95%AA%E8%8C%84%E9%90%98(1)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          5/26 寫出一個番茄鐘(一)設定時間 /會響的鬧鐘 POMO 最簡單版
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/25/2022-05-25-%E7%95%AA%E8%8C%84%E9%90%98(%E7%B8%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">做出一個網頁版的番茄鐘</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

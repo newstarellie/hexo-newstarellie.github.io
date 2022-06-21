@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>學習Sass基礎2 -- 語法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="版權說明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章[FE201] 前端中階：那些前端會用到的工具們  課程  [week 13] 前端工具之二 - CSS 預處理器、Babel  [FE201] 前端中階的總結筆記  Install Sass  內文說明怎樣安裝  使用 SASS(SCSS)建立自己的 CSS Library :: 202">
+<meta property="og:type" content="article">
+<meta property="og:title" content="學習Sass基礎2 -- 語法">
+<meta property="og:url" content="http://example.com/2022/06/02/2022-06-02-Sass-basic2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版權說明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章[FE201] 前端中階：那些前端會用到的工具們  課程  [week 13] 前端工具之二 - CSS 預處理器、Babel  [FE201] 前端中階的總結筆記  Install Sass  內文說明怎樣安裝  使用 SASS(SCSS)建立自己的 CSS Library :: 202">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/788fbe49-1ff1-42a6-87fa-12fc87e83ec0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103035Z&X-Amz-Expires=86400&X-Amz-Signature=90faaef1b067cc000d5089d756563a643487fa73bfb62bf0600d3ea281f18298&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c5b1eca0-3549-4ab2-8dd4-594f26152e5f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103205Z&X-Amz-Expires=86400&X-Amz-Signature=d93b2ff97f12b93dd323db469b4af5082fc003c8fdae8d975d60b2873c7cd2a2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e164f890-312d-4083-b37a-8723e5e1a7f9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103312Z&X-Amz-Expires=86400&X-Amz-Signature=628f95d135753f9caa32087cfd580ba5f2a70506d316804ac204f77af97a8cfa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fde84174-b046-4b0d-9613-c242eb1b0b07/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103326Z&X-Amz-Expires=86400&X-Amz-Signature=9cd9bb3c866d49d6ebb5aeb591ea1ee130ba18e94e7bea76fa5c7066530717fa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9e4ca414-b0c2-4200-8caf-d4e87d6d3a16/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103508Z&X-Amz-Expires=86400&X-Amz-Signature=31cff795f5aa24718a5f96841cd79097dedab13e765da7ca9f7faee56a8e75a1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c039bffa-13ea-42a8-b269-36d68d65fcb0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103523Z&X-Amz-Expires=86400&X-Amz-Signature=7c1615512b706f3dc0d1f4f9969e1309bfbdddc5957d2a63eb5da0faef2fd84b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/793455c6-2130-4c94-8e99-a494836d1535/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103542Z&X-Amz-Expires=86400&X-Amz-Signature=478ccbc634b15407b080e44e6b2a7c69485d6ab76bc8286278e0b9ca3da4f819&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="article:published_time" content="2022-06-02T10:39:10.000Z">
+<meta property="article:modified_time" content="2022-06-08T10:35:59.110Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/788fbe49-1ff1-42a6-87fa-12fc87e83ec0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103035Z&X-Amz-Expires=86400&X-Amz-Signature=90faaef1b067cc000d5089d756563a643487fa73bfb62bf0600d3ea281f18298&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-06-02-Sass-basic2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/02/2022-06-02-Sass-basic2/" class="article-date">
+  <time class="dt-published" datetime="2022-06-02T10:39:10.000Z" itemprop="datePublished">2022-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      學習Sass基礎2 -- 語法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="版權說明"><a href="#版權說明" class="headerlink" title="版權說明"></a>版權說明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://lidemy.com/p/fe201">[FE201] 前端中階：那些前端會用到的工具們</a></p>
+<ul>
+<li>課程</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://heidiliu2020.github.io/sass-babel/">[week 13] 前端工具之二 - CSS 預處理器、Babel</a></p>
+<ul>
+<li><strong>[FE201] 前端中階的總結筆記</strong></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://sass-lang.com/install">Install Sass</a></p>
+<ul>
+<li>內文說明怎樣安裝</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20141363/ironman/4590">使用 SASS(SCSS)建立自己的 CSS Library :: 2021 iThome 鐵人賽</a></p>
+<ul>
+<li>講解 Sass 的觀念時順便做出一套 CSS Library</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10244301">[CSS] Sass 入門教學-新手上路重點摘要(上) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
+<ul>
+<li>scss 的基礎寫法</li>
+</ul>
+<h1 id="參數與結構化-CSS"><a href="#參數與結構化-CSS" class="headerlink" title="參數與結構化 CSS"></a>參數與結構化 CSS</h1><h2 id="巢狀結構"><a href="#巢狀結構" class="headerlink" title="巢狀結構"></a>巢狀結構</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  color: red;</span><br><span class="line">  p &#123;</span><br><span class="line">    color: goldenrod;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 注意scss- 結尾要有; 否則轉檔的時候會出錯</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>CSS 屬性也可以巢狀</strong><br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/788fbe49-1ff1-42a6-87fa-12fc87e83ec0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103035Z&X-Amz-Expires=86400&X-Amz-Signature=90faaef1b067cc000d5089d756563a643487fa73bfb62bf0600d3ea281f18298&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></li>
+</ul>
+<h2 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$main-color:red;</span><br><span class="line">$second-color: yellow;</span><br><span class="line"></span><br><span class="line">h1 &#123;</span><br><span class="line">  color: $main-color;</span><br><span class="line">  p &#123;</span><br><span class="line">    color: $second-color;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="amp-符號接起父層"><a href="#amp-符號接起父層" class="headerlink" title="&amp;符號接起父層"></a>&amp;符號接起父層</h2><p>使用&amp;表示重複前面的 class</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h2&#123;</span><br><span class="line">  color: violet;</span><br><span class="line">  &amp;:hover&#123;</span><br><span class="line">    color: $main-color;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="模組化-CSS"><a href="#模組化-CSS" class="headerlink" title="模組化 CSS"></a>模組化 CSS</h1><h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><ul>
+<li>跟<code>extend</code>的區別?<ul>
+<li>可以引入參數</li>
+<li>可以把常見的功能設定進去 mixin</li>
+</ul>
+</li>
+<li>跟 <code>@function</code> 的區別?<ul>
+<li>與  <code>@mixin</code>  的不同之處，在於  <code>@function</code>  只會回傳一個值，而  <code>@mixin</code>  是回傳一段 CSS 程式碼</li>
+</ul>
+</li>
+<li>可帶入多個參數<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> fontsizeColor(<span class="variable">$size</span>, <span class="variable">$color</span>) &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1rem</span> * <span class="variable">$size</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> fontsizeColor(<span class="number">1</span>, <span class="variable">$main-color</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="extend-繼承"><a href="#extend-繼承" class="headerlink" title="extend 繼承"></a>extend 繼承</h2><ul>
+<li><p>注意不加上’ . ‘ 而是用%來代替</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%title &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> %title;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>後面的設定可以覆蓋<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c5b1eca0-3549-4ab2-8dd4-594f26152e5f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103205Z&X-Amz-Expires=86400&X-Amz-Signature=d93b2ff97f12b93dd323db469b4af5082fc003c8fdae8d975d60b2873c7cd2a2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+</li>
+</ul>
+<h2 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h2><p><a target="_blank" rel="noopener" href="https://hackmd.io/@yuci0213/r17cT6NiL#:~:text=7%EF%BC%8B1%E7%B5%90%E6%A7%8B-,%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86,-%E4%BE%9D%E5%B0%88%E6%A1%88%E6%89%80%E9%9C%80">SCSS&#x2F;CSS 學習筆記 - HackMD</a></p>
+<ul>
+<li><p>規劃檔案的結構</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(有底線代表不會被編譯成一支檔，合併使用)</span><br><span class="line">_variable.scss //專門放相關變數</span><br><span class="line">_mixin.scss //專門放相關mixin函式</span><br><span class="line">_mixinRwd.scss //rwd media</span><br><span class="line">_base.scss //全域設定SCSS</span><br><span class="line">_index.scss //專案頁面SCSS</span><br></pre></td></tr></table></figure></li>
+<li><p>建立一支 main.scss</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;variable&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;mixin&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;mixinRwd&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;base&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//你也可以建立分類的資料夾</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;/page/index&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;abstracts/variables&quot;</span>, <span class="string">&quot;abstracts/functions&quot;</span>, <span class="string">&quot;abstracts/mixins&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/function">SASS @function</a></p>
+<ul>
+<li><p>可以得到一個計算的直</p>
+</li>
+<li><p>然後再做引用<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e164f890-312d-4083-b37a-8723e5e1a7f9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103312Z&X-Amz-Expires=86400&X-Amz-Signature=628f95d135753f9caa32087cfd580ba5f2a70506d316804ac204f77af97a8cfa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject"></p>
+</li>
+<li><p>與  <code>@mixin</code>  的不同之處，在於  <code>@function</code>  只會回傳一個值，而  <code>@mixin</code>  是回傳一段 CSS 程式碼</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fde84174-b046-4b0d-9613-c242eb1b0b07/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103326Z&X-Amz-Expires=86400&X-Amz-Signature=9cd9bb3c866d49d6ebb5aeb591ea1ee130ba18e94e7bea76fa5c7066530717fa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+</li>
+</ul>
+<h1 id="自動化-CSS"><a href="#自動化-CSS" class="headerlink" title="自動化 CSS"></a>自動化 CSS</h1><h2 id="Loop"><a href="#Loop" class="headerlink" title="Loop"></a>Loop</h2><h3 id="使用-each-搭配-array"><a href="#使用-each-搭配-array" class="headerlink" title="使用  @each  搭配 array"></a>使用  <code>@each</code>  搭配 array</h3><ul>
+<li>以逗號表示  <code>center, start, end</code></li>
+<li>#{ } 引用列表的值</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$direction-types</span>: center, start, end</span><br><span class="line"></span><br><span class="line">@each <span class="variable">$type</span> in <span class="variable">$direction-types</span></span><br><span class="line">  .flex-#&#123;<span class="variable">$type</span>&#125;</span><br><span class="line">    <span class="attribute">display</span>: flex</span><br><span class="line">    justify-content: <span class="variable">$type</span></span><br><span class="line">    align-items: center</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9e4ca414-b0c2-4200-8caf-d4e87d6d3a16/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103508Z&X-Amz-Expires=86400&X-Amz-Signature=31cff795f5aa24718a5f96841cd79097dedab13e765da7ca9f7faee56a8e75a1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h3 id="使用-each-搭配-map"><a href="#使用-each-搭配-map" class="headerlink" title="使用  @each  搭配 map"></a>使用  <code>@each</code>  搭配 map</h3><ul>
+<li>在括號以  <code>參數:值</code>  表示  <code>(center: center, start: flex-start, end: flex-end)</code></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$types</span>: (</span><br><span class="line"><span class="comment">//$type : $value</span></span><br><span class="line">  center: center,</span><br><span class="line">  start: flex-start,</span><br><span class="line">  end: flex-end,</span><br><span class="line">);</span><br><span class="line">@each <span class="variable">$type</span>, <span class="variable">$value</span> in <span class="variable">$types</span> &#123;</span><br><span class="line">  .P-<span class="comment">#&#123;$type&#125; &#123;</span></span><br><span class="line">    display: inline;</span><br><span class="line">    justify-<span class="built_in">self</span>: <span class="variable">$value</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c039bffa-13ea-42a8-b269-36d68d65fcb0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103523Z&X-Amz-Expires=86400&X-Amz-Signature=7c1615512b706f3dc0d1f4f9969e1309bfbdddc5957d2a63eb5da0faef2fd84b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h3 id="for-迴圈"><a href="#for-迴圈" class="headerlink" title="for 迴圈"></a>for 迴圈</h3><ul>
+<li>使用時機：用於預先設定，或特效網站需產生密集大小值</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">0</span> through <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//加一是因為要設定h6</span></span><br><span class="line">    .h<span class="comment">#&#123;5 - $i + 1&#125;</span></span><br><span class="line">        font-size: <span class="number">1</span> + <span class="number">0.2</span>rem * <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">1</span> through <span class="number">6</span> &#123;</span><br><span class="line">  h<span class="comment">#&#123;$i&#125; &#123;</span></span><br><span class="line">    font-size: <span class="number">5</span>rem - <span class="variable">$i</span> * <span class="number">0.5</span>rem;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/793455c6-2130-4c94-8e99-a494836d1535/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220608/us-west-2/s3/aws4_request&X-Amz-Date=20220608T103542Z&X-Amz-Expires=86400&X-Amz-Signature=478ccbc634b15407b080e44e6b2a7c69485d6ab76bc8286278e0b9ca3da4f819&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>可參考<a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/at-rules/control/for">官方文件</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/02/2022-06-02-Sass-basic2/" data-id="cl4nw5shl000ilcvr60bfh8gc" data-title="學習Sass基礎2 -- 語法" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/02/2022-06-02-RWD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RWD 01 基礎 - 什麼是RWD  + 建構 RWD 的第一步
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/02/2022-06-02-Sass-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">學習Sass基礎1 --Sass是什麼 如何引入</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

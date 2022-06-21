@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>6/10 SCSS+RWD 六角作業 2.0版 寫出layout | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章一變應萬變的響應式網頁設計 心得 這周工作時間都會使用番茄鐘，有了中間五分鐘的休息時間，讓我可以調整自己現在的工作狀況，回到主線任務，不會像以往，在一些小細節上花費太多時間、或根本忘記工作主軸。 我之前就有利用 Notion 將大任務切割成小任務的習慣，但成效並不太好， 本周加上了番茄鐘，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6&#x2F;10 SCSS+RWD 六角作業 2.0版 寫出layout">
+<meta property="og:url" content="http://example.com/2022/06/10/2022-06-10-Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章一變應萬變的響應式網頁設計 心得 這周工作時間都會使用番茄鐘，有了中間五分鐘的休息時間，讓我可以調整自己現在的工作狀況，回到主線任務，不會像以往，在一些小細節上花費太多時間、或根本忘記工作主軸。 我之前就有利用 Notion 將大任務切割成小任務的習慣，但成效並不太好， 本周加上了番茄鐘，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66f13cea-e884-49a2-8fef-2db4bd615624/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220610/us-west-2/s3/aws4_request&X-Amz-Date=20220610T091018Z&X-Amz-Expires=86400&X-Amz-Signature=83436942b6ff92383f995ac06e0ff9d8c26eb72625b12eb2a06f0b2627c7e977&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+<meta property="article:published_time" content="2022-06-10T09:01:45.000Z">
+<meta property="article:modified_time" content="2022-06-10T09:11:27.157Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66f13cea-e884-49a2-8fef-2db4bd615624/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220610/us-west-2/s3/aws4_request&X-Amz-Date=20220610T091018Z&X-Amz-Expires=86400&X-Amz-Signature=83436942b6ff92383f995ac06e0ff9d8c26eb72625b12eb2a06f0b2627c7e977&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-06-10-Sass-RWD 六角 2.0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/10/2022-06-10-Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/" class="article-date">
+  <time class="dt-published" datetime="2022-06-10T09:01:45.000Z" itemprop="datePublished">2022-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      6/10 SCSS+RWD 六角作業 2.0版 寫出layout
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670051">一變應萬變的響應式網頁設計</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
+<li>這周工作時間都會使用番茄鐘，有了中間五分鐘的休息時間，讓我可以調整自己現在的工作狀況，回到主線任務，不會像以往，在一些小細節上花費太多時間、或根本忘記工作主軸。</li>
+<li>我之前就有利用 Notion 將大任務切割成小任務的習慣，但成效並不太好，<ul>
+<li>本周加上了番茄鐘，將時間也切割成小區塊，可以幫助我掌控每項任務所花費的時間，</li>
+<li>這樣的工作方式很有成就感，感覺自己像是玩遊戲一般，破解任務，且隨著等級提高，會清楚的感覺到完成任務的時間慢慢縮短了。</li>
+</ul>
+</li>
+</ul>
+<h1 id="初期步驟：決定使用工具"><a href="#初期步驟：決定使用工具" class="headerlink" title="初期步驟：決定使用工具"></a>初期步驟：決定使用工具</h1><h2 id="先安裝-嘗試使用-安裝插件"><a href="#先安裝-嘗試使用-安裝插件" class="headerlink" title="先安裝 嘗試使用 安裝插件"></a>先安裝 嘗試使用 安裝插件</h2><ul>
+<li>npm<ul>
+<li>用來管理插件</li>
+</ul>
+</li>
+<li>sass<ul>
+<li>參考文章:<br><a target="_blank" rel="noopener" href="https://newstarellie.github.io/Sass-basic/">學習 Sass 基礎 1 –Sass 是什麼 如何引入</a><br><a target="_blank" rel="noopener" href="https://newstarellie.github.io/Sass-basic2/">學習 Sass 基礎 2 – 語法</a><br><a target="_blank" rel="noopener" href="https://newstarellie.github.io/sass3/"></a></li>
+</ul>
+</li>
+<li>git<ul>
+<li>開啟新的 repo</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/newstarellie/RWD-SASS">newstarellie&#x2F;RWD-SASS</a><ul>
+<li>用於紀錄作品變化</li>
+<li>管理作品版本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="找出想模仿的頁面"><a href="#找出想模仿的頁面" class="headerlink" title="找出想模仿的頁面"></a>找出想模仿的頁面</h2><p>以下為六角課程提供的作業</p>
+<ul>
+<li>細節解釋<br><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/1eebd3/lectures/11953664">最後一版作業細節 (多頁設計)</a></li>
+<li>手機<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard5">Spec Export - Sketch Measure 2.0</a></li>
+<li>桌面<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard0">Spec Export - Sketch Measure 2.0</a></li>
+</ul>
+<h1 id="工作步驟"><a href="#工作步驟" class="headerlink" title="工作步驟"></a>工作步驟</h1><h2 id="步驟一-RWD-規劃"><a href="#步驟一-RWD-規劃" class="headerlink" title="步驟一 : RWD 規劃"></a>步驟一 : RWD 規劃</h2><ul>
+<li>規劃 madia 斷點<br><a target="_blank" rel="noopener" href="https://vector.cool/css-rwd-media-viewport/">CSS RWD 響應式斷點 @media 及常用尺寸速查 - VECTOR COOL 威得數位行銷</a><ul>
+<li>mob 576</li>
+<li>pad 768</li>
+<li>screen 992</li>
+</ul>
+</li>
+<li>從哪裡開始寫 ?<ul>
+<li>手機 使用 min-width</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟二-做出-html-切版"><a href="#步驟二-做出-html-切版" class="headerlink" title="步驟二 : 做出 html 切版"></a>步驟二 : 做出 html 切版</h2><h2 id="步驟三-編輯-SASS"><a href="#步驟三-編輯-SASS" class="headerlink" title="步驟三 : 編輯 SASS"></a>步驟三 : 編輯 SASS</h2><ul>
+<li>筆記請往下看學習筆記</li>
+<li>一遍紀錄遇到的問題 以及解決方法<ul>
+<li>作為最後編輯學習文章的材料</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟四-整理程式碼"><a href="#步驟四-整理程式碼" class="headerlink" title="步驟四 : 整理程式碼"></a>步驟四 : 整理程式碼</h2><ul>
+<li>SASS 的部分<ul>
+<li>利用 comment 將程式碼分類 方便日後尋找</li>
+<li>重新瀏覽 變數<ul>
+<li>確定名稱合適 方便重複使用</li>
+</ul>
+</li>
+<li>重新瀏覽 mixin<ul>
+<li>確定名稱合適 能夠闡明用途</li>
+<li>確定選擇器的範圍選擇 以利重複使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟五-編輯學習文章"><a href="#步驟五-編輯學習文章" class="headerlink" title="步驟五 : 編輯學習文章"></a>步驟五 : 編輯學習文章</h2><ol>
+<li>將步驟三遇到的問題及解答重新整理</li>
+<li>貼上程式碼</li>
+<li>排版</li>
+<li>上傳到 hexo</li>
+</ol>
+<h1 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h1><h2 id="變數設定"><a href="#變數設定" class="headerlink" title="變數設定"></a>變數設定</h2><h3 id="設定變數-上傳圖片-抓取顏色"><a href="#設定變數-上傳圖片-抓取顏色" class="headerlink" title="設定變數: 上傳圖片 抓取顏色"></a>設定變數: 上傳圖片 抓取顏色</h3><p><a target="_blank" rel="noopener" href="https://www.ginifab.com.tw/tools/colors/color_picker_from_image.php">擷取圖片上的顏色(RGB,HEX,CMYK)</a></p>
+<h3 id="迴圈寫出-字體大小"><a href="#迴圈寫出-字體大小" class="headerlink" title="迴圈寫出 字體大小"></a>迴圈寫出 字體大小</h3><ul>
+<li>因為設計稿上面的文字有很多在這個區間 所以寫迴圈產生他們</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for  font-s(14~22px)</span></span><br><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">0</span> through <span class="number">4</span> &#123;</span><br><span class="line">  <span class="selector-class">.font-s</span>#&#123;<span class="number">14</span> + <span class="variable">$i</span>*<span class="number">2</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14</span> + <span class="number">2</span> * <span class="variable">$i</span> + px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.font-s14</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s16</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s18</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s20</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s22</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">22px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工作方法"><a href="#工作方法" class="headerlink" title="工作方法"></a>工作方法</h2><h3 id="引用上一個專案寫出的-sass"><a href="#引用上一個專案寫出的-sass" class="headerlink" title="引用上一個專案寫出的 sass"></a>引用上一個專案寫出的 sass</h3><ul>
+<li>繼續優化自己的 libray 成為日後專案的資料庫</li>
+</ul>
+<h3 id="觀察頁面的-margin-padding-盡量統一設定"><a href="#觀察頁面的-margin-padding-盡量統一設定" class="headerlink" title="觀察頁面的 margin .padding 盡量統一設定"></a>觀察頁面的 margin .padding 盡量統一設定</h3><ul>
+<li>觀察到 h2 下面的空格</li>
+<li>觀察到每個 div 的間距<ul>
+<li>除了最後一個除外 因為他有 footer 的 padding 流出空來</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:not</span>(:last-child) &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="優化設定"><a href="#優化設定" class="headerlink" title="優化設定"></a>優化設定</h2><h3 id="SASS-優化-我做麼什麼"><a href="#SASS-優化-我做麼什麼" class="headerlink" title="SASS 優化 我做麼什麼?"></a>SASS 優化 我做麼什麼?</h3><ul>
+<li><p>刪掉 mixin 裡面的標籤</p>
+</li>
+<li><p>優點:</p>
+<ul>
+<li>可以靈活運用 不用拘泥於原本的標籤</li>
+<li>讓 main 裡面的階層更清楚</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原本</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="variable">$btn-hover-color</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//改成</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$btn-hover-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="按鈕的寫法優化"><a href="#按鈕的寫法優化" class="headerlink" title="按鈕的寫法優化"></a>按鈕的寫法優化</h3><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10262387"></a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向上浮起的效果</span></span><br><span class="line">&amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: scale(<span class="number">1.05</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向下沉 還有陰影的效果</span></span><br><span class="line">&amp;<span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: scale(<span class="number">1</span>);</span><br><span class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">1px</span> rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="logo-改成-SVG-以避免-logo-模糊"><a href="#logo-改成-SVG-以避免-logo-模糊" class="headerlink" title="logo 改成 SVG 以避免 logo 模糊"></a>logo 改成 SVG 以避免 logo 模糊</h3><ul>
+<li>下載 SVG 檔案<br><a target="_blank" rel="noopener" href="https://www.minwt.com/webdesign-dev/html/23166.html">Font Awesome 各別下載 SVG 檔，並將 SVG 嵌入到 CSS，同時可設定圖示大小與顏色</a></li>
+<li>工具 上傳到網站 獲得 url 連結<br><a target="_blank" rel="noopener" href="https://svgur.com/">svgshare.com - share SVG vector files</a></li>
+</ul>
+<h2 id="新學會的"><a href="#新學會的" class="headerlink" title="新學會的"></a>新學會的</h2><h3 id="設定-font-family"><a href="#設定-font-family" class="headerlink" title="設定 font-family"></a>設定 font-family</h3><p><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2014/01/01/font-family/">font-family 要怎麼玩</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;微軟正黑體&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="練習使用偽類-not"><a href="#練習使用偽類-not" class="headerlink" title="練習使用偽類 :not"></a>練習使用偽類 :not</h3><p>使用注意事項:</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not">:not() - CSS（层叠样式表） | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2019/07/css-not-pseudo-class/">CSS :not 伪类可能错误的认识 “ 张鑫旭-鑫空间-鑫生活</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:not</span>(:last-child) &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="練習使用-display-list-item"><a href="#練習使用-display-list-item" class="headerlink" title="練習使用 display: list-item;"></a>練習使用 display: list-item;</h3><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66f13cea-e884-49a2-8fef-2db4bd615624/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220610/us-west-2/s3/aws4_request&X-Amz-Date=20220610T091018Z&X-Amz-Expires=86400&X-Amz-Signature=83436942b6ff92383f995ac06e0ff9d8c26eb72625b12eb2a06f0b2627c7e977&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> list-item-disc &#123;</span><br><span class="line">  <span class="attribute">display</span>: list-item;</span><br><span class="line">  <span class="attribute">list-style</span>: disc;</span><br><span class="line">  <span class="attribute">list-style-position</span>: inside;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立-漢堡選單"><a href="#建立-漢堡選單" class="headerlink" title="建立 漢堡選單"></a>建立 漢堡選單</h3><p><a target="_blank" rel="noopener" href="https://onlystp417.github.io/article/CSS%20_%E6%89%8B%E5%88%BB%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE.html">CSS 手刻漢堡選單 Pure CSS hamburger menu</a></p>
+<ul>
+<li>選擇 png 檔(透明</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.show-menu</span> &#123;</span><br><span class="line">  <span class="comment">//為了可以在其他media尺寸之下隱藏</span></span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="keyword">@include</span> a-link-img(<span class="variable">$menu-btn-img</span>, <span class="number">24px</span>, <span class="number">24px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//&lt;a&gt;btn</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$btn-background-color</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="variable">$btn-background-color</span> solid <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$text-color</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/10/2022-06-10-Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/" data-id="cl4nw5sho000olcvrh1hy0qrb" data-title="6/10 SCSS+RWD 六角作業 2.0版 寫出layout" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/16/2022-05-24-scss-rwd%202-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          6/16 SCSS+RWD 六角作業 2.1版 寫出layout
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/08/2022-06-08-Sass-RWD%201.0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">6/8 SCSS +RWD 基礎頁面 1.0版</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

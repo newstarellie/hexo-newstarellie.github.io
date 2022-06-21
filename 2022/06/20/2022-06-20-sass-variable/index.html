@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SASS 變數命名的方法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章sass 命名變數 快速提示 模組化命名 SASS 變數 Sass 的顏色變數命名方式 筆記怎樣是好的命名方式? 這是我看完文章後的總結 有不準確之處煩請指教 大範圍的寫出特徵 方便查找 例如: 命名顏色 用在哪裡 boder 會出現的通用字 color 想要的顏色 blue 想要深淺 l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS 變數命名的方法">
+<meta property="og:url" content="http://example.com/2022/06/20/2022-06-20-sass-variable/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章sass 命名變數 快速提示 模組化命名 SASS 變數 Sass 的顏色變數命名方式 筆記怎樣是好的命名方式? 這是我看完文章後的總結 有不準確之處煩請指教 大範圍的寫出特徵 方便查找 例如: 命名顏色 用在哪裡 boder 會出現的通用字 color 想要的顏色 blue 想要深淺 l">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-20T06:27:57.000Z">
+<meta property="article:modified_time" content="2022-06-20T06:28:42.539Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2022-06-20-sass-variable" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/20/2022-06-20-sass-variable/" class="article-date">
+  <time class="dt-published" datetime="2022-06-20T06:27:57.000Z" itemprop="datePublished">2022-06-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SASS 變數命名的方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://www.w3study.wiki/a/202110/1249532.html">sass 命名變數 快速提示 模組化命名 SASS 變數</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/drinzj/topics/1316632">Sass 的顏色變數命名方式</a></p>
+<h1 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h1><h2 id="怎樣是好的命名方式"><a href="#怎樣是好的命名方式" class="headerlink" title="怎樣是好的命名方式?"></a>怎樣是好的命名方式?</h2><ul>
+<li>這是我看完文章後的總結 有不準確之處煩請指教</li>
+<li>大範圍的寫出特徵 方便查找</li>
+<li>例如: 命名顏色<ul>
+<li>用在哪裡 boder</li>
+<li>會出現的通用字 color</li>
+<li>想要的顏色 blue</li>
+<li>想要深淺 light</li>
+</ul>
+</li>
+</ul>
+<h2 id="命名顏色-怎樣才不會混亂"><a href="#命名顏色-怎樣才不會混亂" class="headerlink" title="命名顏色 怎樣才不會混亂?"></a>命名顏色 怎樣才不會混亂?</h2><ul>
+<li>先命名 顏色<ul>
+<li>RGBA 變成 敘述</li>
+<li>#AEB8C3 變成 $color-light-gray</li>
+</ul>
+</li>
+<li>應用到元件<ul>
+<li>$boder-color: $color-light-gray</li>
+</ul>
+</li>
+</ul>
+<h2 id="常見的變數名稱-針對元件"><a href="#常見的變數名稱-針對元件" class="headerlink" title="常見的變數名稱 -針對元件"></a>常見的變數名稱 -針對元件</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@tina2793778/sass-%E8%AE%8A%E6%95%B8-variables-9b3946e8443d">Sass 變數(Variables)</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$theme-color</span>: <span class="number">#fff</span>;</span><br><span class="line"><span class="variable">$text-color</span>: black;</span><br><span class="line"><span class="variable">$table-color</span>: rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">25</span>);</span><br><span class="line"><span class="variable">$link-hover-color</span>: darken(<span class="number">#fff</span>,<span class="number">20%</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$font-md</span>：<span class="number">18px</span>-<span class="number">2px</span>;</span><br><span class="line"><span class="variable">$font-lg</span>: <span class="number">16px</span> * <span class="number">1.5</span> ;</span><br><span class="line"><span class="variable">$font-lg</span>: <span class="variable">$font-md</span> * <span class="number">1.5</span> ;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="常見的變數名稱-針對顏色"><a href="#常見的變數名稱-針對顏色" class="headerlink" title="常見的變數名稱- 針對顏色"></a>常見的變數名稱- 針對顏色</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: <span class="variable">$blue</span> !default;</span><br><span class="line"><span class="variable">$secondary</span>: <span class="variable">$gray-600</span> !default;</span><br><span class="line"><span class="variable">$success</span>: <span class="variable">$green</span> !default;</span><br><span class="line"><span class="variable">$info</span>: <span class="variable">$cyan</span> !default;</span><br><span class="line"><span class="variable">$warning</span>: <span class="variable">$yellow</span> !default;</span><br><span class="line"><span class="variable">$danger</span>: <span class="variable">$red</span> !default;</span><br><span class="line"><span class="variable">$light</span>: <span class="variable">$gray-100</span> !default;</span><br><span class="line"><span class="variable">$dark</span>: <span class="variable">$gray-900</span> !default;</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考bootstrap-實用的變數名稱"><a href="#參考bootstrap-實用的變數名稱" class="headerlink" title="參考bootstrap 實用的變數名稱"></a>參考<strong>bootstrap 實用的變數名稱</strong></h2><p><a target="_blank" rel="noopener" href="https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss">bootstrap&#x2F;_variables.scss at main · twbs&#x2F;bootstrap</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$body-bg</span>: <span class="variable">$white</span> !default;</span><br><span class="line"><span class="variable">$body-color</span>: <span class="variable">$gray-900</span> !default;</span><br><span class="line"><span class="variable">$body-text-align</span>: null !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$container-max-widths</span>: (</span><br><span class="line">  sm: <span class="number">540px</span>,</span><br><span class="line">  md: <span class="number">720px</span>,</span><br><span class="line">  lg: <span class="number">960px</span>,</span><br><span class="line">  xl: <span class="number">1140px</span>,</span><br><span class="line">  xxl: <span class="number">1320px</span>,</span><br><span class="line">) !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$border-widths</span>: (</span><br><span class="line">  <span class="number">1</span>: <span class="number">1px</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="number">2px</span>,</span><br><span class="line">  <span class="number">3</span>: <span class="number">3px</span>,</span><br><span class="line">  <span class="number">4</span>: <span class="number">4px</span>,</span><br><span class="line">  <span class="number">5</span>: <span class="number">5px</span>,</span><br><span class="line">) !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$font-size-root</span>: null !default;</span><br><span class="line"><span class="variable">$font-size-base</span>: <span class="number">1rem</span> !default; <span class="comment">// Assumes the browser default, typically `16px`</span></span><br><span class="line"><span class="variable">$font-size-sm</span>: <span class="variable">$font-size-base</span> * <span class="number">0.875</span> !default;</span><br><span class="line"><span class="variable">$font-size-lg</span>: <span class="variable">$font-size-base</span> * <span class="number">1.25</span> !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$h1-font-size</span>: <span class="variable">$font-size-base</span> * <span class="number">2.5</span> !default;</span><br><span class="line"><span class="variable">$h2-font-size</span>: <span class="variable">$font-size-base</span> * <span class="number">2</span> !default;</span><br><span class="line"><span class="variable">$h3-font-size</span>: <span class="variable">$font-size-base</span> * <span class="number">1.75</span> !default;</span><br><span class="line"><span class="variable">$h4-font-size</span>: <span class="variable">$font-size-base</span> * <span class="number">1.5</span> !default;</span><br><span class="line"><span class="variable">$h5-font-size</span>: <span class="variable">$font-size-base</span> * <span class="number">1.25</span> !default;</span><br><span class="line"><span class="variable">$h6-font-size</span>: <span class="variable">$font-size-base</span> !default;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/20/2022-06-20-sass-variable/" data-id="cl4nw5shq000slcvrex3eauyi" data-title="SASS 變數命名的方法" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/20/2022-06-20-css-nth-child/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          css問題-怎樣寫nth-child()?
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/20/2022-06-20-html-Semantic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTML問題-語意化標籤 怎樣使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" rel="tag">鬧鐘功能</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/%E4%BD%9C%E5%93%81/" style="font-size: 10px;">作品</a> <a href="/tags/%E9%AC%A7%E9%90%98%E5%8A%9F%E8%83%BD/" style="font-size: 10px;">鬧鐘功能</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-webpack/">Webpack基礎-建立第一個檔案 /使用Loader</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-css-nth-child/">css問題-怎樣寫nth-child()?</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-sass-variable/">SASS 變數命名的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-html-Semantic/">HTML問題-語意化標籤 怎樣使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/20/2022-06-20-vscode-plugein/">VScode 插件整理- 紀錄其他大大推薦的插件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

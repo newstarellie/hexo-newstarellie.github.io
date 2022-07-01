@@ -22,8 +22,8 @@
 
   <meta name="description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章Documentation - Apache ECharts  echart 從 0 到 1_copyLeft - MdEditor 筆記基礎6&#x2F;30 ECharts 数据集（dataset）-基礎   提供一份数据。 声明一个 X 轴，类目轴（category）。 默认情况下，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1">
-<meta property="og:url" content="https://newstarellie.github.io/%20copy/">
+<meta property="og:title" content="ECharts 05数据集（dataset）">
+<meta property="og:url" content="https://newstarellie.github.io/ECharts%2005%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89/">
 <meta property="og:site_name" content="Ellie&#39;s Blog">
 <meta property="og:description" content="版權聲明本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下引用文章Documentation - Apache ECharts  echart 從 0 到 1_copyLeft - MdEditor 筆記基礎6&#x2F;30 ECharts 数据集（dataset）-基礎   提供一份数据。 声明一个 X 轴，类目轴（category）。 默认情况下，">
 <meta property="og:locale" content="zh_TW">
@@ -46,12 +46,12 @@
 <meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6c992ddc-e4cc-4cfb-a36a-49eb4d7726d3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220701/us-west-2/s3/aws4_request&X-Amz-Date=20220701T171008Z&X-Amz-Expires=86400&X-Amz-Signature=e2afc457d0c4c68d218ad26ead529e4daee0adcc8bee5f97397e3427b14d38e7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
 <meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b1d8b09-a202-4b15-9a59-7228bf028207/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220701/us-west-2/s3/aws4_request&X-Amz-Date=20220701T171025Z&X-Amz-Expires=86400&X-Amz-Signature=5699c51395f06e131e579a0c2aa4e8cb8ececf36b83be4bc3298425ea1440f60&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
 <meta property="article:published_time" content="2022-07-01T16:29:45.000Z">
-<meta property="article:modified_time" content="2022-07-01T17:10:40.980Z">
+<meta property="article:modified_time" content="2022-07-01T17:12:17.718Z">
 <meta property="article:author" content="Ellie Chen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c00270c8-34fe-4dbe-924c-4b628e2c1970/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220701/us-west-2/s3/aws4_request&X-Amz-Date=20220701T164200Z&X-Amz-Expires=86400&X-Amz-Signature=2976b2ee1090b32cfe3d650e4dd6b762528a5670fbe0b6cedb8c3b72721c9dc1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject">
 
-<link rel="canonical" href="https://newstarellie.github.io/%20copy/">
+<link rel="canonical" href="https://newstarellie.github.io/ECharts%2005%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -64,7 +64,7 @@
   };
 </script>
 
-  <title>1 | Ellie's Blog</title>
+  <title>ECharts 05数据集（dataset） | Ellie's Blog</title>
   
 
 
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%20copy/">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/ECharts%2005%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          1
+          ECharts 05数据集（dataset）
         </h1>
 
         <div class="post-meta">
@@ -193,7 +193,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-07-02 00:29:45 / 修改時間：01:10:40" itemprop="dateCreated datePublished" datetime="2022-07-02T00:29:45+08:00">2022-07-02</time>
+              <time title="創建時間：2022-07-02 00:29:45 / 修改時間：01:12:17" itemprop="dateCreated datePublished" datetime="2022-07-02T00:29:45+08:00">2022-07-02</time>
             </span>
 
           
@@ -342,10 +342,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022-07-02/" rel="prev" title="1">
-      <i class="fa fa-chevron-left"></i> 1
+    <a href="/1-ECharts%2000%20%E5%9F%BA%E7%A4%8E%20%E5%AE%89%E8%A3%9D%E8%BC%89%E5%85%A5%20%E5%9F%BA%E7%A4%8E%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B/" rel="prev" title="ECharts 00 基礎 安裝載入 基礎名詞解釋">
+      <i class="fa fa-chevron-left"></i> ECharts 00 基礎 安裝載入 基礎名詞解釋
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/ECharts%2004%20%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE/" rel="next" title="ECharts 04 异步加载数据">
+      ECharts 04 异步加载数据 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     

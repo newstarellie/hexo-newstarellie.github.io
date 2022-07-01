@@ -147,6 +147,447 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/git-.gitignore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/git-.gitignore/" class="post-title-link" itemprop="url">git問題 -.gitignore 寫法 /檔案追蹤問題</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-06-20 14:17:31 / 修改時間：14:31:48" itemprop="dateCreated datePublished" datetime="2022-06-20T14:17:31+08:00">2022-06-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/using-git/ignore">【狀況題】有些檔案我不想放在 Git 裡面… - 為你自己學 Git | 高見龍</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31660687/gitignore-not-ignoring-package-json">.gitignore not ignoring package.json</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
+<li>看完教學文章後自己實驗<ul>
+<li>先提出疑問</li>
+<li>列出實驗步驟</li>
+<li>可以比較各種作法的差距</li>
+<li>最後集結成文章</li>
+</ul>
+</li>
+</ul>
+<h1 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h1><h2 id="gitignore-檔案寫法"><a href="#gitignore-檔案寫法" class="headerlink" title=".gitignore 檔案寫法"></a>.gitignore 檔案寫法</h2><p><a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/using-git/ignore">【狀況題】有些檔案我不想放在 Git 裡面… - 為你自己學 Git | 高見龍</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 忽略 secret.yml 檔案</span><br><span class="line">secret.yml</span><br><span class="line"></span><br><span class="line">#忽略 A資料夾 之下所有的檔案都會忽略</span><br><span class="line">/A</span><br><span class="line"></span><br><span class="line"># 忽略 config 目錄下的 database.yml 檔案</span><br><span class="line">config/database.yml</span><br><span class="line"></span><br><span class="line"># 忽略所有附檔名是 .tmp 的檔案</span><br><span class="line">*.tmp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="比較-gitignore-會真的忽略的檔案"><a href="#比較-gitignore-會真的忽略的檔案" class="headerlink" title="[比較] .gitignore 會真的忽略的檔案"></a>[比較] .gitignore 會真的忽略的檔案</h2><ul>
+<li><p>已經追蹤的檔案(已 commit) 改變之後還是追蹤</p>
+<ul>
+<li>修改內容之後 依然會有紀錄</li>
+</ul>
+</li>
+<li><p>建立之後馬上加入.gitignore (至少是在 add 前</p>
+<ul>
+<li>就可以正確避免被追蹤</li>
+</ul>
+</li>
+<li><p>想消除追蹤 詳情:<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1139762/ignore-files-that-have-already-been-committed-to-a-git-repository/11366713#11366713">Ignore files that have already been committed to a Git repository</a></p>
+</li>
+</ul>
+<h2 id="gitignore-自己使用過後的總結"><a href="#gitignore-自己使用過後的總結" class="headerlink" title=".gitignore 自己使用過後的總結"></a>.gitignore 自己使用過後的總結</h2><ul>
+<li>因為有下載*<strong>*Local History 插件**</strong><ul>
+<li>所以會有.history 的資料夾</li>
+<li>一定要先加入.gitignore<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/70578f71e688">vs code 中 local history 插件使用</a></li>
+</ul>
+</li>
+<li>就算其他東西不便 .gitignore 裡面的東西改變 就可以 commit</li>
+<li>加入.gitignore 在 VScode 會顯示灰色</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/scss-rwd%202-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/scss-rwd%202-1/" class="post-title-link" itemprop="url">6/16 SCSS+RWD 六角作業 2.1版 寫出layout</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-06-16 17:30:51" itemprop="dateCreated datePublished" datetime="2022-06-16T17:30:51+08:00">2022-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-06-21 15:05:35" itemprop="dateModified" datetime="2022-06-21T15:05:35+08:00">2022-06-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p>所有引用文章都貼在筆記標題之下</p>
+<h1 id="頁面範本"><a href="#頁面範本" class="headerlink" title="頁面範本"></a>頁面範本</h1><p>以下為六角課程提供的作業</p>
+<ul>
+<li>細節解釋<br><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/1eebd3/lectures/11953664">最後一版作業細節 (多頁設計)</a></li>
+<li>手機<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard5">Spec Export - Sketch Measure 2.0</a></li>
+<li>桌面<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard0">Spec Export - Sketch Measure 2.0</a></li>
+</ul>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
+<li>下次工作可以加快的部分<ul>
+<li>發現很多重複的原件 就先寫成@mixin 不要等最後在整理<ul>
+<li>去參考人家寫的@mixin 改寫成自己的</li>
+</ul>
+</li>
+<li>寫 HTML 的時候<ul>
+<li>寫 HTML 的時候在寫完又修改 上面浪費很多時間</li>
+<li>下次<ul>
+<li>先畫草圖</li>
+<li>用 screen 的模板來寫 HTML 這樣可以有一些用來排版的元件才不會遺漏</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>之後用用看寫一個 css library 直接套用 class</li>
+</ul>
+<h1 id="寫完程式之後的工作流程"><a href="#寫完程式之後的工作流程" class="headerlink" title="寫完程式之後的工作流程"></a>寫完程式之後的工作流程</h1><ul>
+<li>檢查程式碼<ul>
+<li>添加備註</li>
+<li>確定功能</li>
+<li>確定程式碼安排順序</li>
+</ul>
+</li>
+<li>上傳到 github</li>
+<li>整理工作時累積下來的筆記<ul>
+<li>先看過一次筆記</li>
+<li>查詢、補充資料</li>
+<li>分類 :<ol>
+<li>寫成這次工作筆記</li>
+<li>—以下放入待做事項&#x2F;待寫文章列表—</li>
+<li>要再學習一下 做做看的</li>
+<li>要寫成大文章的</li>
+<li>要做成小作品的</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>放入待做事項&#x2F;待寫文章列表</li>
+<li>整理文章排版</li>
+<li>將文章放到 HEXO</li>
+</ul>
+<h1 id="筆記-新學會的"><a href="#筆記-新學會的" class="headerlink" title="筆記 新學會的"></a>筆記 新學會的</h1><h2 id="github-問題-某一個資料夾推不上去"><a href="#github-問題-某一個資料夾推不上去" class="headerlink" title="[github 問題] 某一個資料夾推不上去"></a>[github 問題] 某一個資料夾推不上去</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/catascdd/article/details/108593601">新建了一个文件夹 Git 推不上去_木木木华的博客-CSDN 博客_git 提交不了新建的文件夹</a></p>
+<ul>
+<li>新建一個新的資料夾 但是沒有文件在內</li>
+<li>空白的資料夾推不上去 ?</li>
+<li>新增文件</li>
+<li>再推一次</li>
+<li></li>
+</ul>
+<h2 id="找到-FontAwesome-的-CDN-以及使用方法"><a href="#找到-FontAwesome-的-CDN-以及使用方法" class="headerlink" title="找到 FontAwesome 的 CDN 以及使用方法"></a>找到 FontAwesome 的 CDN 以及使用方法</h2><ul>
+<li>使用下面網站查詢 CDN</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdnjs.com/libraries/font-awesome">font-awesome - Libraries - cdnjs - The #1 free and open source CDN built to make life easier for developers</a></p>
+<ul>
+<li>HTML 在 head 加上 CDN</li>
+<li>FontAwesome 官網複製 HTML 標籤<br><code>&lt;i class=&quot;fa-solid fa-utensils&quot;&gt;&lt;/i&gt;</code></li>
+</ul>
+<h2 id="HTML-問題-main-標籤的用法"><a href="#HTML-問題-main-標籤的用法" class="headerlink" title="[HTML 問題]main 標籤的用法"></a>[HTML 問題]main 標籤的用法</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/tags/tag-main.html">HTML main 标签
+</a></p>
+<p>使用 main 标签来展示文档的主体部分</p>
+<h2 id="vscode-問題-打開-setting-json-的文字檔"><a href="#vscode-問題-打開-setting-json-的文字檔" class="headerlink" title="[vscode 問題] 打開 setting.json 的文字檔"></a>[vscode 問題] 打開 setting.json 的文字檔</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43798960/article/details/109362907">VSCode 怎么打开 settings.json 文件
+</a></p>
+<ul>
+<li>shift + ctrl + p<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/af598d69-48ac-48c4-93d3-cba4fd9cff0a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220616/us-west-2/s3/aws4_request&X-Amz-Date=20220616T101012Z&X-Amz-Expires=86400&X-Amz-Signature=038819ec785146a871e4a9a9ca3669ac7c3dca3e977ef7002f7490971ffc4261&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></li>
+<li>輸入 settings.json<br><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fc05e9d7-a9e5-4654-9ac6-ff2ca9ba71a6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220616/us-west-2/s3/aws4_request&X-Amz-Date=20220616T101022Z&X-Amz-Expires=86400&X-Amz-Signature=4a541edb4e95963ef6f7553659033981de8654b66c3253049dd05eef79a3f97e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></li>
+</ul>
+<h2 id="RWD-問題-不讓網頁出現-X-軸"><a href="#RWD-問題-不讓網頁出現-X-軸" class="headerlink" title="[RWD 問題]不讓網頁出現 X 軸"></a>[RWD 問題]不讓網頁出現 X 軸</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10220079">RWD 不可顯示 X 軸法則
+</a></p>
+<ul>
+<li>將本來的<code>width</code>改成<code>max-width</code>就可以囉</li>
+</ul>
+<h2 id="Sass-問題-出現-SASS-ERROR-roperties-are-only-allowed-within-rules-directives-mixin-includes-or-other-properties-96"><a href="#Sass-問題-出現-SASS-ERROR-roperties-are-only-allowed-within-rules-directives-mixin-includes-or-other-properties-96" class="headerlink" title="[Sass 問題] 出現 SASS ERROR :roperties are only allowed within rules, directives, mixin includes, or other properties.&#96;"></a>[Sass 問題] 出現 SASS ERROR :roperties are only allowed within rules, directives, mixin includes, or other properties.&#96;</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48558206/sass-error-properties-are-only-allowed-within-rules-directives-mixin-include">SASS ERROR : Properties are only allowed within rules, directives, mixin includes, or other properties</a></p>
+<ul>
+<li>在 css 選擇器外面使用@<code>@include</code> 就會報錯</li>
+</ul>
+<h2 id="vscode-問題-vscode-終端-不能輸入指令"><a href="#vscode-問題-vscode-終端-不能輸入指令" class="headerlink" title="[vscode 問題] vscode 終端 不能輸入指令"></a>[vscode 問題] vscode 終端 不能輸入指令</h2><ol>
+<li><p>修改電腦設定</p>
+<p>電腦軟體圖標 &gt;右鍵＞內容&gt;相容性</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiangwei1994/article/details/81771963">vs code 终端命令不能使用解决方法</a></p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/57c9ef4f-830c-4749-a2e9-4987d7df1f0c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220616/us-west-2/s3/aws4_request&X-Amz-Date=20220616T101925Z&X-Amz-Expires=86400&X-Amz-Signature=2f7e66dd3e2c899eb4be1f363687d73b789e8b348126283c608781ca4c56f53a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject1" alt="Untitled"></p>
+<ol start="2">
+<li><p>改用 git bach</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3d04f9eb-96ff-4d8c-94ab-58b4eee08329/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220616/us-west-2/s3/aws4_request&X-Amz-Date=20220616T101409Z&X-Amz-Expires=86400&X-Amz-Signature=1d10bee5387757211ee25f397ab985f5441dde854821eedf836f577419041ef1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ellie Chen">
+      <meta itemprop="description" content="放一些作品 還有學習紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ellie's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Sass-RWD%20%E5%85%AD%E8%A7%92%202.0/" class="post-title-link" itemprop="url">6/10 SCSS+RWD 六角作業 2.0版 寫出layout</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-06-10 17:01:45 / 修改時間：17:11:27" itemprop="dateCreated datePublished" datetime="2022-06-10T17:01:45+08:00">2022-06-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="版權聲明"><a href="#版權聲明" class="headerlink" title="版權聲明"></a>版權聲明</h1><h2 id="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"><a href="#本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下" class="headerlink" title="本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下"></a>本篇是將文章內容整理濃縮，作為學習之用，下文會一一附上原文連結，如有侵權，經告知之後會立即撤下</h2><h1 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h1><p><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670051">一變應萬變的響應式網頁設計</a></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
+<li>這周工作時間都會使用番茄鐘，有了中間五分鐘的休息時間，讓我可以調整自己現在的工作狀況，回到主線任務，不會像以往，在一些小細節上花費太多時間、或根本忘記工作主軸。</li>
+<li>我之前就有利用 Notion 將大任務切割成小任務的習慣，但成效並不太好，<ul>
+<li>本周加上了番茄鐘，將時間也切割成小區塊，可以幫助我掌控每項任務所花費的時間，</li>
+<li>這樣的工作方式很有成就感，感覺自己像是玩遊戲一般，破解任務，且隨著等級提高，會清楚的感覺到完成任務的時間慢慢縮短了。</li>
+</ul>
+</li>
+</ul>
+<h1 id="初期步驟：決定使用工具"><a href="#初期步驟：決定使用工具" class="headerlink" title="初期步驟：決定使用工具"></a>初期步驟：決定使用工具</h1><h2 id="先安裝-嘗試使用-安裝插件"><a href="#先安裝-嘗試使用-安裝插件" class="headerlink" title="先安裝 嘗試使用 安裝插件"></a>先安裝 嘗試使用 安裝插件</h2><ul>
+<li>npm<ul>
+<li>用來管理插件</li>
+</ul>
+</li>
+<li>sass<ul>
+<li>參考文章:<br><a href="https://newstarellie.github.io/Sass-basic/">學習 Sass 基礎 1 –Sass 是什麼 如何引入</a><br><a href="https://newstarellie.github.io/Sass-basic2/">學習 Sass 基礎 2 – 語法</a><br><a href="https://newstarellie.github.io/sass3/"></a></li>
+</ul>
+</li>
+<li>git<ul>
+<li>開啟新的 repo</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/newstarellie/RWD-SASS">newstarellie&#x2F;RWD-SASS</a><ul>
+<li>用於紀錄作品變化</li>
+<li>管理作品版本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="找出想模仿的頁面"><a href="#找出想模仿的頁面" class="headerlink" title="找出想模仿的頁面"></a>找出想模仿的頁面</h2><p>以下為六角課程提供的作業</p>
+<ul>
+<li>細節解釋<br><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/1eebd3/lectures/11953664">最後一版作業細節 (多頁設計)</a></li>
+<li>手機<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard5">Spec Export - Sketch Measure 2.0</a></li>
+<li>桌面<br><a target="_blank" rel="noopener" href="https://hexschool.github.io/Rwd_sketch_export/#artboard0">Spec Export - Sketch Measure 2.0</a></li>
+</ul>
+<h1 id="工作步驟"><a href="#工作步驟" class="headerlink" title="工作步驟"></a>工作步驟</h1><h2 id="步驟一-RWD-規劃"><a href="#步驟一-RWD-規劃" class="headerlink" title="步驟一 : RWD 規劃"></a>步驟一 : RWD 規劃</h2><ul>
+<li>規劃 madia 斷點<br><a target="_blank" rel="noopener" href="https://vector.cool/css-rwd-media-viewport/">CSS RWD 響應式斷點 @media 及常用尺寸速查 - VECTOR COOL 威得數位行銷</a><ul>
+<li>mob 576</li>
+<li>pad 768</li>
+<li>screen 992</li>
+</ul>
+</li>
+<li>從哪裡開始寫 ?<ul>
+<li>手機 使用 min-width</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟二-做出-html-切版"><a href="#步驟二-做出-html-切版" class="headerlink" title="步驟二 : 做出 html 切版"></a>步驟二 : 做出 html 切版</h2><h2 id="步驟三-編輯-SASS"><a href="#步驟三-編輯-SASS" class="headerlink" title="步驟三 : 編輯 SASS"></a>步驟三 : 編輯 SASS</h2><ul>
+<li>筆記請往下看學習筆記</li>
+<li>一遍紀錄遇到的問題 以及解決方法<ul>
+<li>作為最後編輯學習文章的材料</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟四-整理程式碼"><a href="#步驟四-整理程式碼" class="headerlink" title="步驟四 : 整理程式碼"></a>步驟四 : 整理程式碼</h2><ul>
+<li>SASS 的部分<ul>
+<li>利用 comment 將程式碼分類 方便日後尋找</li>
+<li>重新瀏覽 變數<ul>
+<li>確定名稱合適 方便重複使用</li>
+</ul>
+</li>
+<li>重新瀏覽 mixin<ul>
+<li>確定名稱合適 能夠闡明用途</li>
+<li>確定選擇器的範圍選擇 以利重複使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="步驟五-編輯學習文章"><a href="#步驟五-編輯學習文章" class="headerlink" title="步驟五 : 編輯學習文章"></a>步驟五 : 編輯學習文章</h2><ol>
+<li>將步驟三遇到的問題及解答重新整理</li>
+<li>貼上程式碼</li>
+<li>排版</li>
+<li>上傳到 hexo</li>
+</ol>
+<h1 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h1><h2 id="變數設定"><a href="#變數設定" class="headerlink" title="變數設定"></a>變數設定</h2><h3 id="設定變數-上傳圖片-抓取顏色"><a href="#設定變數-上傳圖片-抓取顏色" class="headerlink" title="設定變數: 上傳圖片 抓取顏色"></a>設定變數: 上傳圖片 抓取顏色</h3><p><a target="_blank" rel="noopener" href="https://www.ginifab.com.tw/tools/colors/color_picker_from_image.php">擷取圖片上的顏色(RGB,HEX,CMYK)</a></p>
+<h3 id="迴圈寫出-字體大小"><a href="#迴圈寫出-字體大小" class="headerlink" title="迴圈寫出 字體大小"></a>迴圈寫出 字體大小</h3><ul>
+<li>因為設計稿上面的文字有很多在這個區間 所以寫迴圈產生他們</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for  font-s(14~22px)</span></span><br><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">0</span> through <span class="number">4</span> &#123;</span><br><span class="line">  <span class="selector-class">.font-s</span>#&#123;<span class="number">14</span> + <span class="variable">$i</span>*<span class="number">2</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14</span> + <span class="number">2</span> * <span class="variable">$i</span> + px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.font-s14</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s16</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s18</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s20</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.font-s22</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">22px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工作方法"><a href="#工作方法" class="headerlink" title="工作方法"></a>工作方法</h2><h3 id="引用上一個專案寫出的-sass"><a href="#引用上一個專案寫出的-sass" class="headerlink" title="引用上一個專案寫出的 sass"></a>引用上一個專案寫出的 sass</h3><ul>
+<li>繼續優化自己的 libray 成為日後專案的資料庫</li>
+</ul>
+<h3 id="觀察頁面的-margin-padding-盡量統一設定"><a href="#觀察頁面的-margin-padding-盡量統一設定" class="headerlink" title="觀察頁面的 margin .padding 盡量統一設定"></a>觀察頁面的 margin .padding 盡量統一設定</h3><ul>
+<li>觀察到 h2 下面的空格</li>
+<li>觀察到每個 div 的間距<ul>
+<li>除了最後一個除外 因為他有 footer 的 padding 流出空來</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:not</span>(:last-child) &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="優化設定"><a href="#優化設定" class="headerlink" title="優化設定"></a>優化設定</h2><h3 id="SASS-優化-我做麼什麼"><a href="#SASS-優化-我做麼什麼" class="headerlink" title="SASS 優化 我做麼什麼?"></a>SASS 優化 我做麼什麼?</h3><ul>
+<li><p>刪掉 mixin 裡面的標籤</p>
+</li>
+<li><p>優點:</p>
+<ul>
+<li>可以靈活運用 不用拘泥於原本的標籤</li>
+<li>讓 main 裡面的階層更清楚</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原本</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="variable">$btn-hover-color</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//改成</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$btn-hover-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="按鈕的寫法優化"><a href="#按鈕的寫法優化" class="headerlink" title="按鈕的寫法優化"></a>按鈕的寫法優化</h3><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10262387"></a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向上浮起的效果</span></span><br><span class="line">&amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: scale(<span class="number">1.05</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向下沉 還有陰影的效果</span></span><br><span class="line">&amp;<span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: scale(<span class="number">1</span>);</span><br><span class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">1px</span> rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="logo-改成-SVG-以避免-logo-模糊"><a href="#logo-改成-SVG-以避免-logo-模糊" class="headerlink" title="logo 改成 SVG 以避免 logo 模糊"></a>logo 改成 SVG 以避免 logo 模糊</h3><ul>
+<li>下載 SVG 檔案<br><a target="_blank" rel="noopener" href="https://www.minwt.com/webdesign-dev/html/23166.html">Font Awesome 各別下載 SVG 檔，並將 SVG 嵌入到 CSS，同時可設定圖示大小與顏色</a></li>
+<li>工具 上傳到網站 獲得 url 連結<br><a target="_blank" rel="noopener" href="https://svgur.com/">svgshare.com - share SVG vector files</a></li>
+</ul>
+<h2 id="新學會的"><a href="#新學會的" class="headerlink" title="新學會的"></a>新學會的</h2><h3 id="設定-font-family"><a href="#設定-font-family" class="headerlink" title="設定 font-family"></a>設定 font-family</h3><p><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2014/01/01/font-family/">font-family 要怎麼玩</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;微軟正黑體&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="練習使用偽類-not"><a href="#練習使用偽類-not" class="headerlink" title="練習使用偽類 :not"></a>練習使用偽類 :not</h3><p>使用注意事項:</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not">:not() - CSS（层叠样式表） | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2019/07/css-not-pseudo-class/">CSS :not 伪类可能错误的认识 “ 张鑫旭-鑫空间-鑫生活</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:not</span>(:last-child) &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="練習使用-display-list-item"><a href="#練習使用-display-list-item" class="headerlink" title="練習使用 display: list-item;"></a>練習使用 display: list-item;</h3><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/66f13cea-e884-49a2-8fef-2db4bd615624/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20220610/us-west-2/s3/aws4_request&X-Amz-Date=20220610T091018Z&X-Amz-Expires=86400&X-Amz-Signature=83436942b6ff92383f995ac06e0ff9d8c26eb72625b12eb2a06f0b2627c7e977&X-Amz-SignedHeaders=host&response-content-disposition=filename%20=%22Untitled.png%22&x-id=GetObject" alt="Untitled"></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> list-item-disc &#123;</span><br><span class="line">  <span class="attribute">display</span>: list-item;</span><br><span class="line">  <span class="attribute">list-style</span>: disc;</span><br><span class="line">  <span class="attribute">list-style-position</span>: inside;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立-漢堡選單"><a href="#建立-漢堡選單" class="headerlink" title="建立 漢堡選單"></a>建立 漢堡選單</h3><p><a target="_blank" rel="noopener" href="https://onlystp417.github.io/article/CSS%20_%E6%89%8B%E5%88%BB%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE.html">CSS 手刻漢堡選單 Pure CSS hamburger menu</a></p>
+<ul>
+<li>選擇 png 檔(透明</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.show-menu</span> &#123;</span><br><span class="line">  <span class="comment">//為了可以在其他media尺寸之下隱藏</span></span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="keyword">@include</span> a-link-img(<span class="variable">$menu-btn-img</span>, <span class="number">24px</span>, <span class="number">24px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//&lt;a&gt;btn</span></span><br><span class="line"><span class="keyword">@mixin</span> a-link-btn &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$btn-background-color</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="variable">$btn-background-color</span> solid <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$text-color</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/Sass-RWD%201.0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -978,358 +1419,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%985/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%95%AA%E8%8C%84%E9%90%985/" class="post-title-link" itemprop="url">5/28 寫出一個番茄鐘(五)-顯示累積工作時間 local storage + 顯示倒數計時 + 檢查輸入</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-05-27 16:32:50" itemprop="dateCreated datePublished" datetime="2022-05-27T16:32:50+08:00">2022-05-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-06-01 15:43:22" itemprop="dateModified" datetime="2022-06-01T15:43:22+08:00">2022-06-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/WNMdmbb">5&#x2F;27 番茄鐘5 倒數計時</a></p>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><ul>
-<li>寫不出來就用說的 最直白的想要什麼功能<ul>
-<li>EX: 三秒後要幫下一個鬧鐘倒數計時</li>
-<li>用來簡化思考方式</li>
-</ul>
-</li>
-<li>在notion頁面上提出問題 之後再一一解決<ul>
-<li>可以幫助我不會在多重任務中迷失</li>
-<li>順便記下學到的東西 從而寫成文章</li>
-</ul>
-</li>
-<li>直接用Notion頁面切分工作<ul>
-<li>可以一一測試功能</li>
-<li>可以直接寫筆記 最後貼上Hexo</li>
-<li>比較容易找得到程式碼</li>
-</ul>
-</li>
-<li>console.log 加上文字<ul>
-<li>EX : console.log(‵累積工作時間:${累積工作時間}&#96;);</li>
-<li>方便直接查看測試結果</li>
-</ul>
-</li>
-<li>console.log不要馬上刪掉<ul>
-<li>可以等文章上傳前 整理程式碼的時候</li>
-<li>方便觀察</li>
-<li>一起整理比較快</li>
-</ul>
-</li>
-</ul>
-<h1 id="邏輯說明"><a href="#邏輯說明" class="headerlink" title="邏輯說明"></a>邏輯說明</h1><h2 id="偵測輸入數字-判斷正確輸入"><a href="#偵測輸入數字-判斷正確輸入" class="headerlink" title="偵測輸入數字 判斷正確輸入"></a>偵測輸入數字 判斷正確輸入</h2><ul>
-<li>利用ture&#x2F;false</li>
-<li>使用for 迴圈 判斷input的值<ul>
-<li>然後改變boolen值</li>
-<li>無法直接alert 在回圈內會出現多個ALERT</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;input&quot;</span>).<span class="title function_">change</span>(<span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//偵測輸入數字 判斷正確輸入</span></span><br><span class="line">      <span class="keyword">let</span> alert1 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        a = $(<span class="string">`.clock-list div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>();</span><br><span class="line">        <span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">          alert1 = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (alert1 == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&quot;時間設定不可為0&quot;</span>);</span><br><span class="line">        alert1 = <span class="literal">false</span>;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">removeAttr</span>(<span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//偵測輸入文字</span></span><br><span class="line">      <span class="keyword">let</span> alert2 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">let</span> b = <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        b = $(<span class="string">`.textSetting div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>();</span><br><span class="line">        <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">          alert2 = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (alert2 == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&quot;提醒文字必填&quot;</span>);</span><br><span class="line">        alert2 = <span class="literal">false</span>;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;.btn-start&quot;</span>).<span class="title function_">removeAttr</span>(<span class="string">&quot;disabled&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="將頁面輸入的時間形成可用的資料"><a href="#將頁面輸入的時間形成可用的資料" class="headerlink" title="將頁面輸入的時間形成可用的資料"></a>將頁面輸入的時間形成可用的資料</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> accumulationTime = <span class="number">0</span>; <span class="comment">//所有時間總和</span></span><br><span class="line"><span class="keyword">let</span> accumulateArr = []; <span class="comment">//累加時間的陣列  秒數=切換頁面狀態的時間</span></span><br><span class="line"><span class="keyword">let</span> originalArr = []; <span class="comment">//個階段鬧鐘時長  原始輸入時間的陣列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//番茄鐘循環的次數</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n = <span class="number">0</span>; n &lt; cycleTimes; n++) &#123;</span><br><span class="line">  <span class="comment">//抓取頁面輸入的值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="comment">//計算所有時間總和</span></span><br><span class="line">    accumulationTime += <span class="title class_">Number</span>(</span><br><span class="line">      $(<span class="string">`fieldset div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>() * <span class="number">60</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">//形成累加時間的陣列  秒數=切換頁面狀態的時間</span></span><br><span class="line">    accumulateArr.<span class="title function_">push</span>(accumulationTime);</span><br><span class="line">    <span class="comment">//形成原始輸入時間的陣列</span></span><br><span class="line">    originalArr.<span class="title function_">push</span>($(<span class="string">`fieldset div:nth-child(<span class="subst">$&#123;i&#125;</span>) input`</span>).<span class="title function_">val</span>() * <span class="number">60</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="判斷當前秒數-改變頁面的狀態"><a href="#判斷當前秒數-改變頁面的狀態" class="headerlink" title="判斷當前秒數 改變頁面的狀態"></a>判斷當前秒數 改變頁面的狀態</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用迴圈 +判斷式 讓鬧鐘在accumulateArr的秒數切換</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; accumulateArr.<span class="property">length</span> + <span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (nowTime == accumulateArr[i]) &#123;</span><br><span class="line">    <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">    <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">    <span class="comment">//設定鬧鐘的倒數計時時間</span></span><br><span class="line">    countDown = originalArr[i + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判斷鬧鐘類型 來改變頁面狀態</span></span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">//當下秒數 還是工作時間 所以要+1</span></span><br><span class="line">      workTime += <span class="number">1</span>;</span><br><span class="line">      $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;休息時間&quot;</span>);</span><br><span class="line">      $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;green&quot;</span>);</span><br><span class="line">      <span class="title function_">textAlarm</span>(workTimeAlarm);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">      $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;工作&quot;</span>);</span><br><span class="line">      $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#FFC0BE&quot;</span>);</span><br><span class="line">      <span class="title function_">textAlarm</span>(breakTimeAlarm);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="計算累積工作時間"><a href="#計算累積工作時間" class="headerlink" title="計算累積工作時間"></a>計算累積工作時間</h2><ul>
-<li>可以改 :<ul>
-<li>if (accumulateArr[i] &lt; nowTime &amp;&amp; nowTime &lt; accumulateArr[i + 1]) {<ul>
-<li>這行用originalArr 作為判段</li>
-</ul>
-</li>
-<li>上面 也要將originalArr 形成cycleTime的倍數陣列</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (accumulationTime &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//先載入第一個鬧鐘 因為下面的判斷式 不會算到第一個鬧鐘的時間</span></span><br><span class="line"><span class="keyword">if</span> (nowTime &lt; accumulateArr[<span class="number">0</span>]) &#123;</span><br><span class="line">  $(<span class="string">&quot;.alarmText&quot;</span>).<span class="title function_">text</span>(<span class="string">&quot;工作時間&quot;</span>);</span><br><span class="line">  $(<span class="string">&quot;body&quot;</span>).<span class="title function_">css</span>(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#FFC0BE&quot;</span>);</span><br><span class="line">  workTime += <span class="number">1</span>;</span><br><span class="line">  <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">  <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基數鬧鐘時間 累積到工作時數</span></span><br><span class="line"><span class="keyword">if</span> (accumulateArr[i] &lt; nowTime &amp;&amp; nowTime &lt; accumulateArr[i + <span class="number">1</span>]) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    workTime += <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//console.log(&quot;workTime&quot; + workTime);</span></span><br><span class="line">    <span class="title function_">workTimeToLocal</span>(workTime);</span><br><span class="line">    <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="每一秒改變的參數-計時"><a href="#每一秒改變的參數-計時" class="headerlink" title="每一秒改變的參數(計時"></a>每一秒改變的參數(計時</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">countDown -= <span class="number">1</span>; <span class="comment">//倒數計時</span></span><br><span class="line"><span class="comment">//將倒數時間顯示在頁面</span></span><br><span class="line"><span class="title function_">countSecondToMinuteAndHour</span>(countDown, <span class="string">&quot;.countDownTime&quot;</span>);</span><br><span class="line"><span class="comment">//所有鬧鐘的時間-1 </span></span><br><span class="line">accumulationTime -= <span class="number">1</span>;</span><br><span class="line"><span class="comment">//目前累積的時間 +1 </span></span><br><span class="line">nowTime += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="將秒數轉為時分秒-將文字插入頁面"><a href="#將秒數轉為時分秒-將文字插入頁面" class="headerlink" title="將秒數轉為時分秒 + 將文字插入頁面"></a>將秒數轉為時分秒 + 將文字插入頁面</h2><ul>
-<li>用於:<ul>
-<li>顯示倒數計時時間</li>
-<li>顯示累積的工作時間</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//計算秒數變成時分秒</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">countSecondToMinuteAndHour</span>(<span class="params">second, place</span>) &#123;</span><br><span class="line">  <span class="comment">//計算時間</span></span><br><span class="line">  <span class="keyword">let</span> showHour = <span class="title class_">Math</span>.<span class="title function_">floor</span>(second / <span class="number">3600</span>);</span><br><span class="line">  <span class="keyword">let</span> showMinutes = <span class="title class_">Math</span>.<span class="title function_">floor</span>(second / <span class="number">60</span>) % <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">let</span> showSecond = second % <span class="number">60</span>;</span><br><span class="line"><span class="comment">//顯示於頁面 </span></span><br><span class="line">  <span class="keyword">if</span> (showHour &lt; <span class="number">10</span>) &#123;</span><br><span class="line"><span class="comment">//加上0 防止版型跑掉</span></span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(2)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showHour&#125;</span>時`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(2)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showHour&#125;</span>小時`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (showMinutes &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(3)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showMinutes&#125;</span>分`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(3)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showMinutes&#125;</span>分`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (showSecond &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(4)`</span>).<span class="title function_">text</span>(<span class="string">`0<span class="subst">$&#123;showSecond&#125;</span>秒`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $(<span class="string">`<span class="subst">$&#123;place&#125;</span> p:nth-child(4)`</span>).<span class="title function_">text</span>(<span class="string">`<span class="subst">$&#123;showSecond&#125;</span>秒`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="將累積工作時間插入到-local-strage"><a href="#將累積工作時間插入到-local-strage" class="headerlink" title="將累積工作時間插入到 local strage"></a>將累積工作時間插入到 local strage</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">workTimeToLocal</span>(<span class="params">workTime</span>) &#123;</span><br><span class="line">    <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;accumulateWorkTime&quot;</span>, workTime);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="累積工作時間-從-local-strage-抓取紀錄的值"><a href="#累積工作時間-從-local-strage-抓取紀錄的值" class="headerlink" title="累積工作時間 從 local strage 抓取紀錄的值"></a>累積工作時間 從 local strage 抓取紀錄的值</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> workTimeAlarm = $(<span class="string">&#x27;input[id=&quot;work-time-alarm&quot;]&#x27;</span>).<span class="title function_">val</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (workTime) &#123;</span><br><span class="line">  <span class="title function_">countSecondToMinuteAndHour</span>(workTime, <span class="string">&quot;.showAccumulateTime&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  workTime = <span class="number">0</span>;</span><br><span class="line">  <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;accumulateWorkTime&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="設定VScode-comment的顏色"><a href="#設定VScode-comment的顏色" class="headerlink" title="設定VScode comment的顏色"></a>設定VScode comment的顏色</h2><p>因為都灰灰的 看起來眼睛好累</p>
-<p><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24627/">vscode 修改註釋顏色</a></p>
-<p>以下文字引用自原文</p>
-<ul>
-<li>安裝一個第三方主題 ,比如我喜歡的bimbo</li>
-<li>theme目錄：C:&#x2F;Users&#x2F;admin&#x2F;.vscode&#x2F;extensions 這個目錄，選安裝了的主題，</li>
-<li>比如我用的bimbo，然後進入下面目錄，並修改pawelgrzybek.bimbo-theme-0.2.0\themes\bimbo-theme-color-theme.json</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%95%AA%E8%8C%84%E9%90%98(3)/" class="post-title-link" itemprop="url">5/26 寫出一個番茄鐘(三)-偵測輸入內容/停止鍵/readonly</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-05-27 13:21:59 / 修改時間：16:32:20" itemprop="dateCreated datePublished" datetime="2022-05-27T13:21:59+08:00">2022-05-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="CodePen成果"><a href="#CodePen成果" class="headerlink" title="CodePen成果"></a>CodePen成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/jOZaJJa">5&#x2F;26 寫出一個番茄鐘(三)-偵測輸入內容&#x2F;停止鍵&#x2F;readonly</a></p>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><h2 id="改變工作方法"><a href="#改變工作方法" class="headerlink" title="改變工作方法"></a>改變工作方法</h2><ul>
-<li>列出想增加的功能</li>
-<li>將功能排列重要程度 先實現重要的</li>
-<li>寫程式之前 先將想法打出來 <ul>
-<li>列舉可行的方案</li>
-<li>防止實作時的混亂</li>
-</ul>
-</li>
-<li>新學會的功能 在空白頁面做實驗 再整合到頁面<ul>
-<li>用codePen紀錄學到的功能</li>
-</ul>
-</li>
-<li>頁面做出一些改變之後就先來寫文章 先整理出心得<ul>
-<li>寫文章之前 要先整理程式碼 </li>
-<li>用以改善工作流程</li>
-<li>用寫下文字的方式 複習近期所學的知識</li>
-</ul>
-</li>
-</ul>
-<h1 id="邏輯說明"><a href="#邏輯說明" class="headerlink" title="邏輯說明"></a>邏輯說明</h1><ul>
-<li>偵測輸入內容<ul>
-<li>使用change 一旦改變input內容就會重新抓到值</li>
-<li>加入判斷 如果內容等於0 或是空白 <ul>
-<li>就alert提示</li>
-<li>並且讓開始計時按鈕不可點擊</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>加入停止鍵 &amp; 按鈕disabled的切換<ul>
-<li>畫面載入時不可點擊 點擊’’開始計時’’之後才可以點擊</li>
-<li>開始計時之後 ‘’開始計時’’按鈕就不能點擊<ul>
-<li>以防計時混亂</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>readonly <ul>
-<li>開始計時之後就不可更改輸入內容<ul>
-<li>以防混亂</li>
-</ul>
-</li>
-<li>點擊’停止計時’就可以更改內容 </li>
-<li>((未來加上’’暫停’’按鈕時 也不可更改內容</li>
-</ul>
-</li>
-</ul>
-<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h2><p>在HTML標籤使用readonly 讓內容變成唯讀模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;input&quot;).attr(&quot;readonly&quot;, &quot;readonly&quot;);</span><br><span class="line"> $(&quot;input&quot;).removeAttr(&quot;readonly&quot;); //移除設定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="disabled"><a href="#disabled" class="headerlink" title="disabled"></a>disabled</h2><p>在HTML標籤使用disabled  讓按鈕不可使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).attr(&quot;disabled&quot;, &quot;disabled&quot;);</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://newstarellie.github.io/%E7%95%AA%E8%8C%84%E9%90%98(2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ellie Chen">
-      <meta itemprop="description" content="放一些作品 還有學習紀錄">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ellie's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%95%AA%E8%8C%84%E9%90%98(2)/" class="post-title-link" itemprop="url">5/26 寫出一個番茄鐘(二)-改變背景顏色 /自動進入下個鬧鐘 /語音設定</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-05-27 13:03:42 / 修改時間：13:58:21" itemprop="dateCreated datePublished" datetime="2022-05-27T13:03:42+08:00">2022-05-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="CodePen成果"><a href="#CodePen成果" class="headerlink" title="CodePen成果"></a>CodePen成果</h1><p><a target="_blank" rel="noopener" href="https://codepen.io/newstarellie/pen/bGLYQKg">5&#x2F;26 寫出一個番茄鐘(二)-改變背景顏色 &#x2F;自動進入下個鬧鐘 &#x2F;語音設定</a></p>
-<h1 id="邏輯說明"><a href="#邏輯說明" class="headerlink" title="邏輯說明"></a>邏輯說明</h1><ul>
-<li>改變背景顏色<ul>
-<li>抓取輸入的時間 形成陣列</li>
-<li>判斷陣列的序列 <ul>
-<li>基數&#x3D;&#x3D;工作時間 &#x3D;&#x3D;背景紅色 </li>
-<li>偶數&#x3D;&#x3D;休息時間&#x3D;&#x3D;背景綠色 </li>
-<li>最後一個&#x3D;&#x3D;結束計時 &#x3D;&#x3D;背景白色 </li>
-<li>之後想改成可以讓使用者自己選擇顏色</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>自動進入下個鬧鐘 <ul>
-<li>抓取所有輸入的時間</li>
-<li>加總所有時間 </li>
-<li>設定setInterval</li>
-</ul>
-</li>
-<li>語音設定<ul>
-<li>抓取輸入的文字</li>
-<li>使用new SpeechSynthesisUtterance()</li>
-<li>在特定時間撥放</li>
-</ul>
-</li>
-</ul>
-<h1 id="使用程式-本次新學會的"><a href="#使用程式-本次新學會的" class="headerlink" title="使用程式(本次新學會的)"></a>使用程式(本次新學會的)</h1><h2 id="new-SpeechSynthesisUtterance"><a href="#new-SpeechSynthesisUtterance" class="headerlink" title="new SpeechSynthesisUtterance()"></a>new SpeechSynthesisUtterance()</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196799">JS30-Day23-Speech Synthesis
-</a></p>
-<h3 id="SpeechSynthesisUtterance-Property"><a href="#SpeechSynthesisUtterance-Property" class="headerlink" title="SpeechSynthesisUtterance Property"></a>SpeechSynthesisUtterance Property</h3><p>SpeechSynthesisUtterance.lang：設定或取得發音的語言。</p>
-<p>SpeechSynthesisUtterance.pitch：設定或取得發音的音調。</p>
-<p>SpeechSynthesisUtterance.rate：設定或取得發音的速度。</p>
-<p>SpeechSynthesisUtterance.text：設定或取得發音的文字內容。</p>
-<p>SpeechSynthesisUtterance.voice：設定或取得發音的聲音。</p>
-<p>SpeechSynthesisUtterance.volume：設定或取得發音的音量。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function finishedAlarm(text) &#123;</span><br><span class="line">    var msg = new SpeechSynthesisUtterance();</span><br><span class="line">    msg.text = text;</span><br><span class="line">    msg.lang = [&quot;zh-TW&quot;];</span><br><span class="line">    msg.volume = 100; // 聲音的音量</span><br><span class="line">    msg.rate = 0.7; //語速，數值，預設值是1，範圍是0.1到10</span><br><span class="line">    msg.pitch = 1.5; // 表示說話的音高，數值，範圍從0（最小）到2（最大）。預設值為1</span><br><span class="line">    speechSynthesis.speak(msg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1399,7 +1488,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
